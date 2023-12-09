@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "SubFarm",
+			"Path": "..\\Source\\SubFarm.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "SubFarmEditor",
+			"Path": "..\\Source\\SubFarmEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
