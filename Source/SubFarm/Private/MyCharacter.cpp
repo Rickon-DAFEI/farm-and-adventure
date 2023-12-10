@@ -70,15 +70,15 @@ void AMyCharacter::Tick(float DeltaTime)
 	//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%s"),*HitActor->GetName()));
 	//}
 
-	FCollisionObjectQueryParams objectType;
-	objectType.AddObjectTypesToQuery(ECC_WorldDynamic);
-	bool bHit2 = GetWorld()->LineTraceSingleByObjectType(HitResult, StartLocation, EndLocation, objectType);
-	if (bHit2) {
-		AActor* HitActor2 = HitResult.GetActor();
-		FVector ImpactPoint2 = HitResult.ImpactPoint;
-		FVector HitLocation2 = HitResult.Location;
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%s"), *HitActor2->GetName()));
-	}
+	//FCollisionObjectQueryParams objectType;
+	//objectType.AddObjectTypesToQuery(ECC_WorldDynamic);
+	//bool bHit2 = GetWorld()->LineTraceSingleByObjectType(HitResult, StartLocation, EndLocation, objectType);
+	//if (bHit2) {
+	//	AActor* HitActor2 = HitResult.GetActor();
+	//	FVector ImpactPoint2 = HitResult.ImpactPoint;
+	//	FVector HitLocation2 = HitResult.Location;
+	//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%s"), *HitActor2->GetName()));
+	//}
 }
 
 // Called to bind functionality to input
