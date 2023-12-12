@@ -20,4 +20,5 @@ public:
 	virtual void WheelDownFunction();
 
 	virtual void BeginPlay() override;
+	void OnMouseClick();
 };

@@ -3,6 +3,7 @@
 #include "MyPlayerController.h"
 #include "Blueprint/UserWidget.h"
 #include "MyCharacter.h"
+#include "FiledActor.h"
 
 void AMyPlayerController::SetupInputComponent()
 {
@@ -16,7 +17,7 @@ void AMyPlayerController::SetupInputComponent()
 	FInputModeGameAndUI InputMode;
 	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	SetInputMode(InputMode);
-
+	InputComponent->BindAction("MouseClick", IE_Pressed, this, &AMyPlayerController::OnMouseClick);
 
 }
 
@@ -47,4 +48,24 @@ void AMyPlayerController::BeginPlay()
 	UUserWidget* MyWidgetClass = nullptr;
 	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(),widgetClass);
 	//MyWidgetClass->AddToViewport();
+}
+
+void AMyPlayerController::OnMouseClick()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Clicked"));
+	FHitResult HitResult;
+	if (GetHitResultUnderCursorByChannel(UEngineTypes::ConvertToTraceType(ECollisionChannel::ECC_Visibility), false, HitResult))
+	{
+		if (HitResult.GetActor() != nullptr)
+		{	
+			AActor* HitActor = HitResult.GetActor();
+			FString HitActorName = *HitActor->GetName();
+			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, HitActorName);
+			if (HitActorName.StartsWith("BP_FiledActor")) {
+				AFiledActor* CurrentFileActor = Cast<AFiledActor>(HitActor);
+				CurrentFileActor->ClickFunction("empty");
+			}
+
+		}
+	}
 }
