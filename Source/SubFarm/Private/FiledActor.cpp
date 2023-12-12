@@ -15,7 +15,7 @@ AFiledActor::AFiledActor()
 	RootComponent = MyScene;
 	FiledMesh->SetupAttachment(MyScene);
 	PlantMesh->SetupAttachment(FiledMesh);
-	static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFiledMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/mesh.mesh'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFiledMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/mesh_1__Box357.mesh_1__Box357'"));
 	FiledMesh->SetStaticMesh(TempFiledMesh.Object);
 }
 

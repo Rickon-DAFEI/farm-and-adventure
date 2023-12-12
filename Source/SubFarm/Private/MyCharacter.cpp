@@ -13,17 +13,20 @@ AMyCharacter::AMyCharacter()
 
 	MyWidgetHealth = CreateDefaultSubobject<UWidgetComponent>(TEXT("MyWidgetComponent"));
 
-	MyWidgetHealth->SetupAttachment(RootComponent);
-
+	//MyWidgetHealth->SetupAttachment(RootComponent);
+	CameraHeight = 450.0f;
 	static ConstructorHelpers::FClassFinder<UUserWidget>WidgetClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UMG_HealthWidget.UMG_HealthWidget_C'"));
-	MyWidgetHealth->SetWidgetClass(WidgetClass.Class);
-	MyWidgetHealth->SetRelativeLocation(FVector(0, 0, 100));
-	MyWidgetHealth->SetWidgetSpace(EWidgetSpace::Screen);
-	MyWidgetHealth->SetDrawSize(FVector2D(400, 20));
+	//MyWidgetHealth->SetWidgetClass(WidgetClass.Class);
+	//MyWidgetHealth->SetRelativeLocation(FVector(0, 0, 100));
+	//MyWidgetHealth->SetWidgetSpace(EWidgetSpace::Screen);
+	//MyWidgetHealth->SetDrawSize(FVector2D(400, 20));
+	FRotator NewRotation = FRotator(-45.0f, 0.0f, 0.0f);
+	FVector NewLocation = FVector(-CameraHeight, 0.0f, CameraHeight);
 
-
-	MySpringArm->TargetArmLength = 400.0f;
+	MySpringArm->SetupAttachment(RootComponent);
 	MyCamera->SetupAttachment(MySpringArm);
+	MyCamera->SetWorldRotation(NewRotation);
+	MyCamera->SetRelativeLocation(NewLocation);
 	MySpringArm->SetupAttachment(RootComponent);
 	// movement not effect character, but camera
 	bUseControllerRotationPitch = false;
@@ -139,5 +142,20 @@ void AMyCharacter::CaclulateHealth()
 void AMyCharacter::PrintTime()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("CurrentTime"));
+}
+
+void AMyCharacter::Zoom(bool Dirction, float ZoomSpeed)
+{
+
+	if (CameraHeight >= 300.0f && CameraHeight <= 1200.0f) {
+
+		CameraHeight += (Dirction ? -1 : 1) * (ZoomSpeed * 2);
+		CameraHeight = fmax(300, CameraHeight);
+		CameraHeight = fmin(1200, CameraHeight);
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%f"), CameraHeight));
+		FVector NewLocation = FVector(-CameraHeight, 0.0f, CameraHeight);
+		MyCamera->SetRelativeLocation(NewLocation);
+	}
+
 }
 

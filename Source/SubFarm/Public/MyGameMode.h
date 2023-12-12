@@ -6,7 +6,7 @@
 #include "GameFramework/GameMode.h"
 #include "MyGameState.h"
 #include "MyHUD.h"
-#include "MyPawn.h"
+#include "MyCharacter.h"
 #include "MySpectatorPawn.h"
 #include "MyPlayerController.h"
 #include "MyPlayerState.h"

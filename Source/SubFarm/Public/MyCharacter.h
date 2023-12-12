@@ -71,4 +71,8 @@ public:
 
 	FTimerHandle Time;
 	void PrintTime();
+
+	void Zoom(bool Dirction, float ZoomSpeed);
+
+	float CameraHeight;
 };

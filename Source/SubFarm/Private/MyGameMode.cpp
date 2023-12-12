@@ -4,7 +4,7 @@
 #include "MyGameMode.h"
 
 AMyGameMode::AMyGameMode() {
-	DefaultPawnClass = AMyPawn::StaticClass();
+	DefaultPawnClass = AMyCharacter::StaticClass();
 	PlayerControllerClass = AMyPlayerController::StaticClass();
 	GameStateClass = AMyGameState::StaticClass();
 	HUDClass = AMyHUD::StaticClass();
