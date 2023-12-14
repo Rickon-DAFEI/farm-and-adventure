@@ -8,28 +8,32 @@ bool UMyUserWidget::Initialize()
 	if (!Super::Initialize()) {
 		return false;
 	}
-	ButtonStart->OnClicked.AddDynamic(this, &UMyUserWidget::Start);
-	ButtonQuit->OnClicked.AddDynamic(this, &UMyUserWidget::Quit);
+	BackpackButton->OnClicked.AddDynamic(this, &UMyUserWidget::OpenBackpack);
 	return true;
 }
 
-void UMyUserWidget::Start()
+void UMyUserWidget::OpenBackpack()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Start"));
-	UpdateHealth();
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("open backpack"));
 }
 
-void UMyUserWidget::Quit()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Quit"));
-}
-
-void UMyUserWidget::UpdateHealth()
-{
-	if (CurrentHealth <= 0) {
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Death"));
-	}
-	else {
-		CurrentHealth -= 10;
-	}
-}
+//void UMyUserWidget::Start()
+//{
+//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Start"));
+//	UpdateHealth();
+//}
+//
+//void UMyUserWidget::Quit()
+//{
+//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Quit"));
+//}
+//
+//void UMyUserWidget::UpdateHealth()
+//{
+//	if (CurrentHealth <= 0) {
+//		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Death"));
+//	}
+//	else {
+//		CurrentHealth -= 10;
+//	}
+//}

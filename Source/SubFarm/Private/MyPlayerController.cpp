@@ -44,10 +44,10 @@ void AMyPlayerController::WheelDownFunction()
 void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UMG_Widget.UMG_Widget_C'"));
+	UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyUserWidget.BP_MyUserWidget_C'"));
 	UUserWidget* MyWidgetClass = nullptr;
 	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(),widgetClass);
-	//MyWidgetClass->AddToViewport();
+	MyWidgetClass->AddToViewport();
 }
 
 void AMyPlayerController::OnMouseClick()

@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "Components/TextBlock.h"
+#include "Components/Image.h"
 #include "MyUserWidget.generated.h"
 
 /**
@@ -16,28 +18,37 @@ class SUBFARM_API UMyUserWidget : public UUserWidget
 	GENERATED_BODY()
 	
 public:
+	//UPROPERTY(meta = (BindWidget))
+	//UButton* ButtonStart;
+	//UPROPERTY(meta = (BindWidget))
+	//UButton* ButtonQuit;
 	UPROPERTY(meta = (BindWidget))
-	UButton* ButtonStart;
+	UTextBlock* MoneyText;
+
 	UPROPERTY(meta = (BindWidget))
-	UButton* ButtonQuit;
+	UImage* MoneyImageWidget;
 
+	UPROPERTY(meta = (BindWidget))
+	UImage* BackpackImageWidget;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyHealth")
-	float CurrentHealth = 100.0f;
+	UPROPERTY(meta = (BindWidget))
+	UButton* BackpackButton;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyHealth")
+	//float CurrentHealth = 100.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyHealth")
-	float MaxHealth = 100.0f;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyHealth")
+	//float MaxHealth = 100.0f;
 
-
-
-	void UpdateHealth();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyUserWidget")
+	int Money;
+	//void UpdateHealth();
 
 	virtual bool Initialize() override;
 
 	UFUNCTION()
-	void Start();
-	UFUNCTION()
-	void Quit();
+	void OpenBackpack();
+	//UFUNCTION()
+	//void Quit();
 
 
 };
