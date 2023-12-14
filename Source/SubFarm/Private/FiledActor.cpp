@@ -18,7 +18,9 @@ AFiledActor::AFiledActor()
 	//PlantMesh->SetRelativeLocation(FVector(0, 0, 100.0f));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFiledMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/mesh_1__Box357.mesh_1__Box357'"));
 	FiledMesh->SetStaticMesh(TempFiledMesh.Object);
-	PlantTomato();
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh>TempPlantMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t5.t5'"));
+	//PlantMesh->SetStaticMesh(TempPlantMesh.Object);
+	//PlantTomato();
 	CurrentState.State = 0;
 	CurrentState.CurrentLevel = 0;
 	CurrentState.WeedsTime = 0;
@@ -42,13 +44,10 @@ void AFiledActor::Tick(float DeltaTime)
 	FHitResult HitResult;
 }
 
+
 void AFiledActor::PlantTomato() {
 
 	PlantingLevel NewLevel;
-	//NewLevel.Name = TEXT("Seed");
-	//NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t5.t5'");
-	//NewLevel.NeedGrowTime = 2.0f;
-	//PlantGrowthLevel.Add(NewLevel);
 	NewLevel.Name = TEXT("Germination");
 	NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t4.t4'");
 	NewLevel.NeedGrowTime = 2.0f;
@@ -66,8 +65,12 @@ void AFiledActor::PlantTomato() {
 	NewLevel.NeedGrowTime = 2.0f;
 	PlantGrowthLevel.Add(NewLevel);
 	FString GrowthMeshPath = PlantGrowthLevel[0].MeshReference;
-	static ConstructorHelpers::FObjectFinder<UStaticMesh>TempPlantMesh(*GrowthMeshPath);
-	PlantMesh->SetStaticMesh(TempPlantMesh.Object);
+	UStaticMesh* Mesh = Cast<UStaticMesh>(StaticLoadObject(UStaticMesh::StaticClass(), nullptr, *GrowthMeshPath));
+	if (Mesh)
+	{
+		PlantMesh->SetStaticMesh(Mesh);
+
+	}
 }
 
 void AFiledActor::Growth()
@@ -97,7 +100,9 @@ void AFiledActor::ClickFunction(const FString CurrentTool)
 	//if (true) {
 	//	// plant tomato
 	//}
-	Growth();
+	//Growth();
+	PlantTomato();
+
 }
 
 void AFiledActor::BuyFiled()
