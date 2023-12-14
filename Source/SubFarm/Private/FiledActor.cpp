@@ -24,13 +24,15 @@ AFiledActor::AFiledActor()
 	CurrentState.WeedsTime = 0;
 	CurrentState.LastWeedingTime = 0;
 	CurrentState.Worth = 100;
-	CurrentState.Lock = 0;
+	CurrentState.HavePlant = 0;
 }
 
 // Called when the game starts or when spawned
 void AFiledActor::BeginPlay()
 {
+	FTimerHandle TimerHandle;
 	Super::BeginPlay();
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AFiledActor::Growth, 5.0f, true);
 }
 
 // Called every frame
@@ -43,10 +45,10 @@ void AFiledActor::Tick(float DeltaTime)
 void AFiledActor::PlantTomato() {
 
 	PlantingLevel NewLevel;
-	NewLevel.Name = TEXT("Seed");
-	NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t5.t5'");
-	NewLevel.NeedGrowTime = 2.0f;
-	PlantGrowthLevel.Add(NewLevel);
+	//NewLevel.Name = TEXT("Seed");
+	//NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t5.t5'");
+	//NewLevel.NeedGrowTime = 2.0f;
+	//PlantGrowthLevel.Add(NewLevel);
 	NewLevel.Name = TEXT("Germination");
 	NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t4.t4'");
 	NewLevel.NeedGrowTime = 2.0f;
@@ -70,19 +72,6 @@ void AFiledActor::PlantTomato() {
 
 void AFiledActor::Growth()
 {
-	
-}
-
-void AFiledActor::ClickFunction(const FString CurrentTool)
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Click filed"));
-	if (CurrentState.Lock) {
-		BuyFiled();
-	}
-	// consume plant tomato
-	//if (true) {
-	//	// plant tomato
-	//}
 	int maxLevel = PlantGrowthLevel.Num();
 	UStaticMesh* LoadedMesh = nullptr;
 	if (CurrentState.CurrentLevel + 1 < PlantGrowthLevel.Num())
@@ -98,7 +87,21 @@ void AFiledActor::ClickFunction(const FString CurrentTool)
 	CurrentState.CurrentLevel++;
 }
 
+void AFiledActor::ClickFunction(const FString CurrentTool)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Click filed"));
+	if (CurrentState.State) {
+		BuyFiled();
+	}
+	// consume plant tomato
+	//if (true) {
+	//	// plant tomato
+	//}
+	Growth();
+}
+
 void AFiledActor::BuyFiled()
 {
+	
 }
 

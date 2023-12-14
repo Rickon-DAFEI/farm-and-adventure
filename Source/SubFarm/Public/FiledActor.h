@@ -8,12 +8,12 @@
 
 struct PlantingState
 {
-	int State;
+	int State; //unLock:1 Dry:0 Grass:2 Normal:3
 	float WeedsTime;
 	float LastWeedingTime;
 	int Worth;
-	int Lock;
 	int CurrentLevel;
+	bool HavePlant;
 };
 
 struct PlantingLevel {
@@ -36,7 +36,6 @@ protected:
 
 	PlantingState CurrentState;
 	TArray<PlantingLevel> PlantGrowthLevel;
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
