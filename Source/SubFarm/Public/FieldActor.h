@@ -60,4 +60,7 @@ public:
 	UFUNCTION()
 	void Growth();
 
+	UFUNCTION()
+	void Harvest();
+
 };

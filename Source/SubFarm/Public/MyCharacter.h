@@ -15,6 +15,7 @@
 #include "MyHealthWidget.h"
 #include "Components/WidgetComponent.h"
 #include "TimerManager.h"
+#include "MyBackpack.h"
 #include "MyInterface.h"
 #include "MyCharacter.generated.h"
 
@@ -30,6 +31,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	MyBackpack PlayerBackpack;
 
 public:	
 	// Called every frame
@@ -75,4 +77,6 @@ public:
 	void Zoom(bool Dirction, float ZoomSpeed);
 
 	float CameraHeight;
+
+	void AddBackpackItems(TArray<BackPackItem> AddList);
 };

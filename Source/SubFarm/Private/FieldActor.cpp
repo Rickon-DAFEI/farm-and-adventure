@@ -90,6 +90,15 @@ void AFieldActor::Growth()
 	CurrentState.CurrentLevel++;
 }
 
+void AFieldActor::Harvest()
+{
+	int maxLevel = PlantGrowthLevel.Num();
+	if (CurrentState.CurrentLevel == maxLevel) {
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Empty Field"));
+		PlantMesh->SetStaticMesh(nullptr);
+	}
+}
+
 void AFieldActor::ClickFunction(const FString CurrentTool)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Click Field"));
@@ -107,6 +116,7 @@ void AFieldActor::ClickFunction(const FString CurrentTool)
 
 void AFieldActor::BuyField()
 {
-	
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("BuyField"));
+
 }
 

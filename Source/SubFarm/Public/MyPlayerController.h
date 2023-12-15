@@ -21,4 +21,5 @@ public:
 
 	virtual void BeginPlay() override;
 	void OnMouseClick();
+	int CurrentState;
 };

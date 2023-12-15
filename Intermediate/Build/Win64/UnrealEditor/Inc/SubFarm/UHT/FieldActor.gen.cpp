@@ -16,6 +16,13 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	SUBFARM_API UClass* Z_Construct_UClass_AFieldActor_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_SubFarm();
 // End Cross Module References
+	DEFINE_FUNCTION(AFieldActor::execHarvest)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Harvest();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AFieldActor::execGrowth)
 	{
 		P_FINISH;
@@ -45,6 +52,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 			{ "BuyField", &AFieldActor::execBuyField },
 			{ "ClickFunction", &AFieldActor::execClickFunction },
 			{ "Growth", &AFieldActor::execGrowth },
+			{ "Harvest", &AFieldActor::execHarvest },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -126,6 +134,28 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AFieldActor_Harvest_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFieldActor_Harvest_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/FieldActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFieldActor_Harvest_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFieldActor, nullptr, "Harvest", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_Harvest_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFieldActor_Harvest_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AFieldActor_Harvest()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_Harvest_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AFieldActor);
 	UClass* Z_Construct_UClass_AFieldActor_NoRegister()
 	{
@@ -163,6 +193,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		{ &Z_Construct_UFunction_AFieldActor_BuyField, "BuyField" }, // 2143471755
 		{ &Z_Construct_UFunction_AFieldActor_ClickFunction, "ClickFunction" }, // 1011962261
 		{ &Z_Construct_UFunction_AFieldActor_Growth, "Growth" }, // 3871956682
+		{ &Z_Construct_UFunction_AFieldActor_Harvest, "Harvest" }, // 2302071424
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFieldActor_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -238,9 +269,9 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 674246599U) },
+		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 2619243932U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_805246594(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_1638291997(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

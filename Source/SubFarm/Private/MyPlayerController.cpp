@@ -48,6 +48,7 @@ void AMyPlayerController::BeginPlay()
 	UUserWidget* MyWidgetClass = nullptr;
 	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(),widgetClass);
 	MyWidgetClass->AddToViewport();
+	CurrentState = 0;
 }
 
 void AMyPlayerController::OnMouseClick()
@@ -62,8 +63,35 @@ void AMyPlayerController::OnMouseClick()
 			FString HitActorName = *HitActor->GetName();
 			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, HitActorName);
 			if (HitActorName.StartsWith("BP_FieldActor")) {
-				AFieldActor* CurrentFileActor = Cast<AFieldActor>(HitActor);
-				CurrentFileActor->ClickFunction("empty");
+				AFieldActor* CurrentFieldActor = Cast<AFieldActor>(HitActor);
+				if (CurrentState == 0) {
+					CurrentFieldActor->BuyField();
+					CurrentState++;
+				}
+				else if (CurrentState == 1) {
+					CurrentFieldActor->ClickFunction("PlantTomato");
+					CurrentFieldActor->PlantTomato();
+					CurrentState++;
+				}
+				else {
+					CurrentFieldActor->ClickFunction("Harvest");
+					CurrentFieldActor->Harvest();
+					CurrentState++;
+					if (GetPawn()) {
+						AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
+						BackPackItem newItems[2] = {
+							{2,1001,"tomato seeds",0},
+							{1,1002,"tomato",0},
+						};
+						TArray<BackPackItem> AddList;
+						for (const auto& AddItem : newItems) {
+							AddList.Add(AddItem);
+						}
+						if (MyCharacter) {
+							MyCharacter->AddBackpackItems(AddList);
+						}
+					}
+				}
 			}
 
 		}
