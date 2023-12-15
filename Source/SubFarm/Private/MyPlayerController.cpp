@@ -79,14 +79,11 @@ void AMyPlayerController::OnMouseClick()
 					CurrentState++;
 					if (GetPawn()) {
 						AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
-						BackPackItem newItems[2] = {
-							{2,1001,"tomato seeds",0},
-							{1,1002,"tomato",0},
-						};
-						TArray<BackPackItem> AddList;
-						for (const auto& AddItem : newItems) {
-							AddList.Add(AddItem);
-						}
+						ItemNumber newItem;
+						newItem.HashIndex = 2002;
+						newItem.Number = 2;
+						TArray<ItemNumber> AddList;
+						AddList.Add(newItem);
 						if (MyCharacter) {
 							MyCharacter->AddBackpackItems(AddList);
 						}

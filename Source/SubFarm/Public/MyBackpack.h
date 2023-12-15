@@ -4,14 +4,18 @@
 
 #include "CoreMinimal.h"
 
-struct BackPackItem {
-	int Number;
-	int HashIndex;
+struct ItemDetailMessage {
 	FString Name;
-	//FString ImageReference;
-	//FString MeshImageReference;
+	FString ImageReference;
 	int Type; // 0:Pet 1:Only for sale 2:Tool that can interactive with map 3:property can interactive with pet
 };
+
+struct ItemNumber {
+	int HashIndex;
+	int Number;
+};
+
+
 
 /**
  *
@@ -19,8 +23,8 @@ struct BackPackItem {
 class SUBFARM_API MyBackpack
 {
 private:
-	TMap<int32, BackPackItem> BackpackItemList;
-
+	TMap<int, int> BackpackItemList;
+	TMap<int, ItemDetailMessage> ItemDetailMap;
 public:
 	MyBackpack();
 	~MyBackpack();

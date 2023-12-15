@@ -5,6 +5,15 @@
 
 MyBackpack::MyBackpack()
 {
+	ItemDetailMap.Add(2002, { TEXT("Tomato Seeds"), TEXT("TEST TOMATO PATH"), 2 });
+	ItemDetailMap.Add(2003, { TEXT("Tomato"), TEXT("TEST TOMATO PATH"), 1 });
+	//ItemDetailMessage newItemMessage;
+	//newItemMessage.ImageReference = TEXT("TEST TOMATO PATH");
+	//newItemMessage.Name = TEXT("Tomato Seeds");
+	//newItemMessage.Type = 2;
+
+	//ItemDetailMap.Add(2002, newItemMessage);
+
 }
 
 MyBackpack::~MyBackpack()
@@ -13,20 +22,17 @@ MyBackpack::~MyBackpack()
 
 void MyBackpack::AlterItemNumber(int ItemHashIndex, int Number)
 {
-	if (BackpackItemList.Find(ItemHashIndex)) {
-		BackPackItem* ItemTemp = &BackpackItemList[ItemHashIndex];
-		ItemTemp->Number += Number;
-		ItemTemp->Number = fmax(0, ItemTemp->Number);
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Add Item"));
-	}
-	else {
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("New Item"));
-	}
-
-	//for (const TPair<KeyType, ValueType>& Pair : MyMap)
-	//{
-	//	KeyType Key = Pair.Key;
-	//	ValueType Value = Pair.Value;
-	//}
+    int* ItemTemp = BackpackItemList.Find(ItemHashIndex);
+    if (ItemTemp) {
+        *ItemTemp += Number;
+        if (*ItemTemp < 0) {
+            *ItemTemp = 0;
+        }
+        GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("Add Item %s %d"), *ItemDetailMap[ItemHashIndex].Name, *ItemTemp));
+    }
+    else {
+        BackpackItemList.Add(ItemHashIndex, Number > 0 ? Number : 0);
+        GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("New Item %s %d"), *ItemDetailMap[ItemHashIndex].Name, Number > 0 ? Number : 0));
+    }
 }
 
