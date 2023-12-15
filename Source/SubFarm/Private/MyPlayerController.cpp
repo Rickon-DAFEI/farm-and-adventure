@@ -3,7 +3,7 @@
 #include "MyPlayerController.h"
 #include "Blueprint/UserWidget.h"
 #include "MyCharacter.h"
-#include "FiledActor.h"
+#include "FieldActor.h"
 
 void AMyPlayerController::SetupInputComponent()
 {
@@ -61,8 +61,8 @@ void AMyPlayerController::OnMouseClick()
 			AActor* HitActor = HitResult.GetActor();
 			FString HitActorName = *HitActor->GetName();
 			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, HitActorName);
-			if (HitActorName.StartsWith("BP_FiledActor")) {
-				AFiledActor* CurrentFileActor = Cast<AFiledActor>(HitActor);
+			if (HitActorName.StartsWith("BP_FieldActor")) {
+				AFieldActor* CurrentFileActor = Cast<AFieldActor>(HitActor);
 				CurrentFileActor->ClickFunction("empty");
 			}
 
