@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\10168\\Documents\\Unreal Projects\\SubFarm\\Source\\SubFarm\\SubFarm.Build.cs",
-		"C:\\Users\\10168\\Documents\\Unreal Projects\\SubFarm\\Source\\SubFarm.Target.cs",
-		"C:\\Users\\10168\\Documents\\Unreal Projects\\SubFarm\\Source\\SubFarmEditor.Target.cs"
+		"D:\\farm-and-advanture\\Source\\SubFarm\\SubFarm.Build.cs",
+		"D:\\farm-and-advanture\\Source\\SubFarm.Target.cs",
+		"D:\\farm-and-advanture\\Source\\SubFarmEditor.Target.cs"
 	],
 	"EngineVersion": "5.3.2"
 }
