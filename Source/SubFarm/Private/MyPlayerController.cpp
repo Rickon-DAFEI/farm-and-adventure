@@ -45,6 +45,9 @@ void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyUserWidget.BP_MyUserWidget_C'"));
+	/// Script / UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget'
+	//UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C''"));
+
 	UUserWidget* MyWidgetClass = nullptr;
 	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(),widgetClass);
 	MyWidgetClass->AddToViewport();

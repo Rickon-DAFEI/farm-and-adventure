@@ -53,6 +53,9 @@
     <ClCompile Include="..\..\Source\SubFarm\Private\MyBackpack.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SubFarm\Private\MyBackpackWidget.cpp">
+      <Filter>Source\SubFarm\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SubFarm\Private\MyBullet.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
@@ -111,6 +114,9 @@
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyBackpack.h">
+      <Filter>Source\SubFarm\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SubFarm\Public\MyBackpackWidget.h">
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyBullet.h">

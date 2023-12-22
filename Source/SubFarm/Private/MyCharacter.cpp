@@ -15,7 +15,7 @@ AMyCharacter::AMyCharacter()
 
 	//MyWidgetHealth->SetupAttachment(RootComponent);
 	CameraHeight = 450.0f;
-	static ConstructorHelpers::FClassFinder<UUserWidget>WidgetClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UMG_HealthWidget.UMG_HealthWidget_C'"));
+	static ConstructorHelpers::FClassFinder<UUserWidget>WidgetClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C'"));
 	//MyWidgetHealth->SetWidgetClass(WidgetClass.Class);
 	//MyWidgetHealth->SetRelativeLocation(FVector(0, 0, 100));
 	//MyWidgetHealth->SetWidgetSpace(EWidgetSpace::Screen);

@@ -29,8 +29,7 @@ public:
 	MyBackpack();
 	~MyBackpack();
 
+	
 	void AlterItemNumber(int ItemHashIndex, int Number);
-
-
 
 };
