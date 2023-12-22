@@ -26,10 +26,11 @@ private:
 	TMap<int, int> BackpackItemList;
 	TMap<int, ItemDetailMessage> ItemDetailMap;
 public:
+
 	MyBackpack();
 	~MyBackpack();
 
-	
 	void AlterItemNumber(int ItemHashIndex, int Number);
-
+	
+	TMap<int, int> GetBackpackItemList() const { return BackpackItemList; }
 };

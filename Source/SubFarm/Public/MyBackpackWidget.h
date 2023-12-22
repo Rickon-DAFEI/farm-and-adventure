@@ -8,7 +8,9 @@
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 #include "Components/WrapBox.h"
+#include "BackpackItemWidget.h"
 #include "MyBackpackWidget.generated.h"
+
 
 /**
  * 
@@ -34,7 +36,9 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	UWrapBox* WrapBox;
-	
 
 	virtual bool Initialize() override;
+
+	UFUNCTION()
+	void FreshBackPack();
 };

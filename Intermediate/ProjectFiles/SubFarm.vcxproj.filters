@@ -44,6 +44,9 @@
     <Filter Include="Source\SubFarm\Private">
       <UniqueIdentifier>{8AD7E420-0B71-3B55-9D60-2442F1B91785}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\SubFarm\Private\BackpackItemWidget.cpp">
+      <Filter>Source\SubFarm\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SubFarm\Private\FieldActor.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
@@ -104,9 +107,15 @@
     <ClCompile Include="..\..\Source\SubFarm\Private\MyUserWidget.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SubFarm\Private\PackpackItem.cpp">
+      <Filter>Source\SubFarm\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\SubFarm\Public">
       <UniqueIdentifier>{395204B0-5DEB-3A39-A3BC-C5302DD7D9DE}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\SubFarm\Public\BackpackItemWidget.h">
+      <Filter>Source\SubFarm\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\FieldActor.h">
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
@@ -165,6 +174,9 @@
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyUserWidget.h">
+      <Filter>Source\SubFarm\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SubFarm\Public\PackpackItem.h">
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
   </ItemGroup>

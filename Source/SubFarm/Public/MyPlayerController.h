@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "MyBackpackWidget.h"
 #include "MyPlayerController.generated.h"
 
 /**d
@@ -20,6 +21,11 @@ public:
 	virtual void WheelDownFunction();
 
 	virtual void BeginPlay() override;
+
+	UMyBackpackWidget* MybackpackWidget;
 	void OnMouseClick();
 	int CurrentState;
+
+	void AddBackpackWidgetToViewport();
+	void RemoveBackpackWidgetToViewport();
 };

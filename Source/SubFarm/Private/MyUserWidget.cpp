@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MyUserWidget.h"
+#include "MyPlayerController.h"
 
 bool UMyUserWidget::Initialize()
 {
@@ -14,6 +13,11 @@ bool UMyUserWidget::Initialize()
 
 void UMyUserWidget::OpenBackpack()
 {
+	AMyPlayerController* MyController = Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController());
+	if (MyController)
+	{
+		MyController->AddBackpackWidgetToViewport();
+	}
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("open backpack"));
 }
 

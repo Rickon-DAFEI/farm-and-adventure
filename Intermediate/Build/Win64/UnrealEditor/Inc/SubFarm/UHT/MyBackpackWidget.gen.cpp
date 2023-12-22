@@ -17,8 +17,42 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 	UMG_API UClass* Z_Construct_UClass_UWrapBox_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_SubFarm();
 // End Cross Module References
+	DEFINE_FUNCTION(UMyBackpackWidget::execFreshBackPack)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->FreshBackPack();
+		P_NATIVE_END;
+	}
 	void UMyBackpackWidget::StaticRegisterNativesUMyBackpackWidget()
 	{
+		UClass* Class = UMyBackpackWidget::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "FreshBackPack", &UMyBackpackWidget::execFreshBackPack },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/MyBackpackWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMyBackpackWidget, nullptr, "FreshBackPack", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::Function_MetaDataParams), Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UMyBackpackWidget);
 	UClass* Z_Construct_UClass_UMyBackpackWidget_NoRegister()
@@ -28,6 +62,7 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 	struct Z_Construct_UClass_UMyBackpackWidget_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -60,6 +95,10 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_SubFarm,
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::DependentSingletons) < 16);
+	const FClassFunctionLinkInfo Z_Construct_UClass_UMyBackpackWidget_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack, "FreshBackPack" }, // 1958753827
+	};
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyBackpackWidget_Statics::Class_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
@@ -124,11 +163,11 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 		nullptr,
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_UMyBackpackWidget_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::PropPointers),
 		0,
 		0x00B010A0u,
@@ -155,9 +194,9 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UMyBackpackWidget, UMyBackpackWidget::StaticClass, TEXT("UMyBackpackWidget"), &Z_Registration_Info_UClass_UMyBackpackWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyBackpackWidget), 3930822593U) },
+		{ Z_Construct_UClass_UMyBackpackWidget, UMyBackpackWidget::StaticClass, TEXT("UMyBackpackWidget"), &Z_Registration_Info_UClass_UMyBackpackWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyBackpackWidget), 1512467840U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_239595123(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_3290336328(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

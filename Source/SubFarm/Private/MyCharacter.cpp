@@ -12,7 +12,6 @@ AMyCharacter::AMyCharacter()
 	MyCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("MyCameraComponent"));
 
 	MyWidgetHealth = CreateDefaultSubobject<UWidgetComponent>(TEXT("MyWidgetComponent"));
-
 	//MyWidgetHealth->SetupAttachment(RootComponent);
 	CameraHeight = 450.0f;
 	static ConstructorHelpers::FClassFinder<UUserWidget>WidgetClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C'"));

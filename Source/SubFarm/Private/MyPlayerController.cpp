@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyPlayerController.h"
-#include "Blueprint/UserWidget.h"
 #include "MyCharacter.h"
 #include "FieldActor.h"
 
@@ -47,10 +46,10 @@ void AMyPlayerController::BeginPlay()
 	UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyUserWidget.BP_MyUserWidget_C'"));
 	/// Script / UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget'
 	//UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C''"));
-
 	UUserWidget* MyWidgetClass = nullptr;
 	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(),widgetClass);
 	MyWidgetClass->AddToViewport();
+
 	CurrentState = 0;
 }
 
@@ -95,5 +94,20 @@ void AMyPlayerController::OnMouseClick()
 			}
 
 		}
+	}
+}
+
+void AMyPlayerController::AddBackpackWidgetToViewport()
+{
+	UClass* MybackpackWidgetClass = LoadClass<UMyBackpackWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C'"));
+	MybackpackWidget = CreateWidget<UMyBackpackWidget>(GetWorld(), MybackpackWidgetClass);
+	MybackpackWidget->AddToViewport();
+}
+
+void AMyPlayerController::RemoveBackpackWidgetToViewport()
+{
+	if (MybackpackWidget && MybackpackWidget->IsInViewport())
+	{
+		MybackpackWidget->RemoveFromViewport();
 	}
 }
