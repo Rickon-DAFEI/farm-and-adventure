@@ -115,15 +115,15 @@ void EmptyLinkFunctionForGeneratedCodeMyHUD() {}
 	AMyHUD::AMyHUD(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyHUD);
 	AMyHUD::~AMyHUD() {}
-	struct Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyHUD_h_Statics
+	struct Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyHUD_h_Statics
 	{
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyHUD_h_Statics::ClassInfo[] = {
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyHUD_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_AMyHUD, AMyHUD::StaticClass, TEXT("AMyHUD"), &Z_Registration_Info_UClass_AMyHUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyHUD), 4111719443U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyHUD_h_2082375392(TEXT("/Script/SubFarm"),
-		Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyHUD_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyHUD_h_Statics::ClassInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyHUD_h_2082375392(TEXT("/Script/SubFarm"),
+		Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyHUD_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyHUD_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

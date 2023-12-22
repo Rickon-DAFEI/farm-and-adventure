@@ -79,15 +79,15 @@ void EmptyLinkFunctionForGeneratedCodeMySpectatorPawn() {}
 	AMySpectatorPawn::AMySpectatorPawn(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMySpectatorPawn);
 	AMySpectatorPawn::~AMySpectatorPawn() {}
-	struct Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MySpectatorPawn_h_Statics
+	struct Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MySpectatorPawn_h_Statics
 	{
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MySpectatorPawn_h_Statics::ClassInfo[] = {
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MySpectatorPawn_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_AMySpectatorPawn, AMySpectatorPawn::StaticClass, TEXT("AMySpectatorPawn"), &Z_Registration_Info_UClass_AMySpectatorPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMySpectatorPawn), 1620024014U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MySpectatorPawn_h_706714783(TEXT("/Script/SubFarm"),
-		Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MySpectatorPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MySpectatorPawn_h_Statics::ClassInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MySpectatorPawn_h_706714783(TEXT("/Script/SubFarm"),
+		Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MySpectatorPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MySpectatorPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

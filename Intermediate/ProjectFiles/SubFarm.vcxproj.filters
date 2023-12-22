@@ -50,7 +50,7 @@
     <ClCompile Include="..\..\Source\SubFarm\Private\MyActor.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\SubFarm\Private\MyBackPack.cpp">
+    <ClCompile Include="..\..\Source\SubFarm\Private\MyBackpack.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SubFarm\Private\MyBullet.cpp">
@@ -110,7 +110,7 @@
     <ClInclude Include="..\..\Source\SubFarm\Public\MyActor.h">
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\SubFarm\Public\MyBackPack.h">
+    <ClInclude Include="..\..\Source\SubFarm\Public\MyBackpack.h">
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyBullet.h">

@@ -39,11 +39,14 @@ void EmptyLinkFunctionForGeneratedCodeMyPlayerController() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyPlayerController_Statics::Class_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
+		{ "Comment", "/**d\n * \n */" },
 #endif
 		{ "HideCategories", "Collision Rendering Transformation" },
 		{ "IncludePath", "MyPlayerController.h" },
 		{ "ModuleRelativePath", "Public/MyPlayerController.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "d" },
+#endif
 	};
 #endif
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AMyPlayerController_Statics::StaticCppClassTypeInfo = {
@@ -79,15 +82,15 @@ void EmptyLinkFunctionForGeneratedCodeMyPlayerController() {}
 	AMyPlayerController::AMyPlayerController(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyPlayerController);
 	AMyPlayerController::~AMyPlayerController() {}
-	struct Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyPlayerController_h_Statics
+	struct Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyPlayerController_h_Statics
 	{
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyPlayerController_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AMyPlayerController, AMyPlayerController::StaticClass, TEXT("AMyPlayerController"), &Z_Registration_Info_UClass_AMyPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyPlayerController), 1624525140U) },
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyPlayerController_h_Statics::ClassInfo[] = {
+		{ Z_Construct_UClass_AMyPlayerController, AMyPlayerController::StaticClass, TEXT("AMyPlayerController"), &Z_Registration_Info_UClass_AMyPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyPlayerController), 271458896U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyPlayerController_h_3787287686(TEXT("/Script/SubFarm"),
-		Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyPlayerController_h_Statics::ClassInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyPlayerController_h_3719187051(TEXT("/Script/SubFarm"),
+		Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyPlayerController_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

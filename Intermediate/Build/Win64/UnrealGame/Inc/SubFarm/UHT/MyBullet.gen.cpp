@@ -120,15 +120,15 @@ void EmptyLinkFunctionForGeneratedCodeMyBullet() {}
 	}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AMyBullet);
 	AMyBullet::~AMyBullet() {}
-	struct Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyBullet_h_Statics
+	struct Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyBullet_h_Statics
 	{
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyBullet_h_Statics::ClassInfo[] = {
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyBullet_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_AMyBullet, AMyBullet::StaticClass, TEXT("AMyBullet"), &Z_Registration_Info_UClass_AMyBullet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyBullet), 2010651361U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyBullet_h_2355815322(TEXT("/Script/SubFarm"),
-		Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyBullet_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyBullet_h_Statics::ClassInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyBullet_h_2355815322(TEXT("/Script/SubFarm"),
+		Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyBullet_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyBullet_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

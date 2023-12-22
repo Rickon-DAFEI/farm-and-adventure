@@ -190,19 +190,19 @@ template<> SUBFARM_API UScriptStruct* StaticStruct<FMyDataTableStruct>()
 	UMyObject::UMyObject(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UMyObject);
 	UMyObject::~UMyObject() {}
-	struct Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_Statics
+	struct Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_Statics
 	{
 		static const FStructRegisterCompiledInInfo ScriptStructInfo[];
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_Statics::ScriptStructInfo[] = {
+	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_Statics::ScriptStructInfo[] = {
 		{ FMyDataTableStruct::StaticStruct, Z_Construct_UScriptStruct_FMyDataTableStruct_Statics::NewStructOps, TEXT("MyDataTableStruct"), &Z_Registration_Info_UScriptStruct_MyDataTableStruct, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FMyDataTableStruct), 3579879503U) },
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_Statics::ClassInfo[] = {
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_UMyObject, UMyObject::StaticClass, TEXT("UMyObject"), &Z_Registration_Info_UClass_UMyObject, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyObject), 698931776U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_1940066044(TEXT("/Script/SubFarm"),
-		Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_Statics::ClassInfo),
-		Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_advanture_Source_SubFarm_Public_MyObject_h_Statics::ScriptStructInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_1940066044(TEXT("/Script/SubFarm"),
+		Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_Statics::ClassInfo),
+		Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_farm_and_adventure_Source_SubFarm_Public_MyObject_h_Statics::ScriptStructInfo),
 		nullptr, 0);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
