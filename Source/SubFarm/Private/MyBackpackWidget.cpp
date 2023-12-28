@@ -35,6 +35,8 @@ bool UMyBackpackWidget::Initialize()
                     UBackpackItemWidget* NewWidget = CreateWidget<UBackpackItemWidget>(this, ItemWidgetClass);
                     if (WrapBox && NewWidget)
                     {
+                        NewWidget->SetItemContentImage(ImageReference);
+                        NewWidget->SetNumber(Value);
                         WrapBox->AddChildToWrapBox(NewWidget);
                         
                     }
@@ -44,7 +46,6 @@ bool UMyBackpackWidget::Initialize()
     }
     // Load the UBackpackItemWidget class
     CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
-
     return true;
 
 }

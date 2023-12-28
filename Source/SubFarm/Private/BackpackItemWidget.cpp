@@ -13,3 +13,8 @@ void UBackpackItemWidget::SetItemContentImage(const FString& AssetPath)
         ItemContentUrl->SetBrushFromTexture(ImageTexture);
     }
 }
+
+void UBackpackItemWidget::SetItemNumber(int32 Number)
+{
+    NumberText->SetText(FText::AsNumber(Number));
+}
