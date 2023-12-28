@@ -50,7 +50,6 @@ void AMyPlayerController::BeginPlay()
 	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(),widgetClass);
 	MyWidgetClass->AddToViewport();
 
-	CurrentState = 0;
 }
 
 void AMyPlayerController::OnMouseClick()
@@ -66,30 +65,34 @@ void AMyPlayerController::OnMouseClick()
 			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, HitActorName);
 			if (HitActorName.StartsWith("BP_FieldActor")) {
 				AFieldActor* CurrentFieldActor = Cast<AFieldActor>(HitActor);
-				if (CurrentState == 0) {
+				if (CurrentFieldActor->GetState()==1) {
+					// unlock
 					CurrentFieldActor->BuyField();
-					CurrentState++;
 				}
-				else if (CurrentState == 1) {
+				else if (!CurrentFieldActor->CheckHasPlant()) {
+					// get hand plant
 					CurrentFieldActor->ClickFunction("PlantTomato");
-					CurrentFieldActor->PlantTomato();
-					CurrentState++;
+					CurrentFieldActor->Plant(2001);
 				}
-				else {
-					CurrentFieldActor->ClickFunction("Harvest");
-					CurrentFieldActor->Harvest();
-					CurrentState++;
-					if (GetPawn()) {
-						AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
-						ItemNumber newItem;
-						newItem.HashIndex = 2002;
-						newItem.Number = 2;
-						TArray<ItemNumber> AddList;
-						AddList.Add(newItem);
-						if (MyCharacter) {
-							MyCharacter->AddBackpackItems(AddList);
+				else if(CurrentFieldActor->CheckHasPlant()){
+					if (!CurrentFieldActor->CheckCanHarvest()) {
+						CurrentFieldActor->Growth();
+					}
+					else {
+						CurrentFieldActor->ClickFunction("Harvest");
+						if (GetPawn()) {
+							AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
+							ItemNumber newItem;
+							newItem.HashIndex = 2002;
+							newItem.Number = 2;
+							TArray<ItemNumber> AddList;
+							AddList.Add(newItem);
+							if (MyCharacter) {
+								MyCharacter->AddBackpackItems(AddList);
+							}
 						}
 					}
+					CurrentFieldActor->Harvest();
 				}
 			}
 

@@ -4,23 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "MyItemObject.h"
 #include "FieldActor.generated.h"
 
 struct PlantingState
 {
-	int State; //unLock:1 Dry:0 Grass:2 Normal:3
+	int32 State; //unLock:1 Dry:0 Normal:3
 	float WeedsTime;
 	float LastWeedingTime;
-	int Worth;
-	int CurrentLevel;
+	int32 Worth;
+	int32 CurrentLevel;
+	bool Lock;
 	bool HavePlant;
 };
 
-struct PlantingLevel {
-	FString Name;
-	FString MeshReference;
-	float NeedGrowTime;
-};
 UCLASS()
 class SUBFARM_API AFieldActor : public AActor
 {
@@ -35,7 +32,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	PlantingState CurrentState;
-	TArray<PlantingLevel> PlantGrowthLevel;
+	TArray<FGrowthStepsStruct> PlantGrowthLevel;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -55,12 +52,23 @@ public:
 	UFUNCTION()
 	void BuyField();
 
-	void PlantTomato();
+	//void PlantTomato();
 	
+	UFUNCTION()
+	void Plant(int HashIndex);
+
 	UFUNCTION()
 	void Growth();
 
 	UFUNCTION()
 	void Harvest();
 
+	UFUNCTION()
+	int32 GetState();
+
+	UFUNCTION()
+	bool CheckHasPlant();
+
+	UFUNCTION()
+	bool CheckCanHarvest();
 };

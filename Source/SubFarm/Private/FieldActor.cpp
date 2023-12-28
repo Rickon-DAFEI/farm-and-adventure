@@ -21,7 +21,8 @@ AFieldActor::AFieldActor()
 	//static ConstructorHelpers::FObjectFinder<UStaticMesh>TempPlantMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t5.t5'"));
 	//PlantMesh->SetStaticMesh(TempPlantMesh.Object);
 	//PlantTomato();
-	CurrentState.State = 0;
+	CurrentState.State = 1;
+	CurrentState.Lock = 0;
 	CurrentState.CurrentLevel = 0;
 	CurrentState.WeedsTime = 0;
 	CurrentState.LastWeedingTime = 0;
@@ -44,32 +45,33 @@ void AFieldActor::Tick(float DeltaTime)
 	FHitResult HitResult;
 }
 
+FORCEINLINE static UDataTable* LoadDataTable(const FName& Path)
+{
+	return Cast<UDataTable>(StaticLoadObject(UDataTable::StaticClass(), nullptr, *Path.ToString()));
+} 
 
-void AFieldActor::PlantTomato() {
 
-	PlantingLevel NewLevel;
-	NewLevel.Name = TEXT("Germination");
-	NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t4.t4'");
-	NewLevel.NeedGrowTime = 2.0f;
-	PlantGrowthLevel.Add(NewLevel);
-	NewLevel.Name = TEXT("Leaf");
-	NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t3.t3'");
-	NewLevel.NeedGrowTime = 2.0f;
-	PlantGrowthLevel.Add(NewLevel);
-	NewLevel.Name = TEXT("Flower");
-	NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t2.t2'");
-	NewLevel.NeedGrowTime = 2.0f;
-	PlantGrowthLevel.Add(NewLevel);
-	NewLevel.Name = TEXT("Mature");
-	NewLevel.MeshReference = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t1.t1'");
-	NewLevel.NeedGrowTime = 2.0f;
-	PlantGrowthLevel.Add(NewLevel);
-	FString GrowthMeshPath = PlantGrowthLevel[0].MeshReference;
-	UStaticMesh* Mesh = Cast<UStaticMesh>(StaticLoadObject(UStaticMesh::StaticClass(), nullptr, *GrowthMeshPath));
-	if (Mesh)
+void AFieldActor::Plant(int HashIndex)
+{
+	const FName RowName = FName(*FString::FromInt(HashIndex-2000));
+	const FName ItemInfoPath =
+		TEXT("/Script/Engine.DataTable'/Game/item.item'");
+	
+	UDataTable* Table = LoadDataTable(ItemInfoPath);
+
+	const FMyItemTableStruct* TableRow = Table->FindRow<FMyItemTableStruct>(RowName, TEXT("GrowthSteps"));
+	if (Table)
 	{
-		PlantMesh->SetStaticMesh(Mesh);
-
+		const TArray<FGrowthStepsStruct>& GrowthSteps = TableRow->GrowthSteps;
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("GrowthSteps"));
+		PlantGrowthLevel = GrowthSteps;
+		FString GrowthMeshPath = PlantGrowthLevel[0].MeshPath;
+		UStaticMesh* Mesh = Cast<UStaticMesh>(StaticLoadObject(UStaticMesh::StaticClass(), nullptr, *GrowthMeshPath));
+		if (Mesh)
+		{
+			PlantMesh->SetStaticMesh(Mesh);
+			CurrentState.HavePlant = 1;
+		}
 	}
 }
 
@@ -79,10 +81,9 @@ void AFieldActor::Growth()
 	UStaticMesh* LoadedMesh = nullptr;
 	if (CurrentState.CurrentLevel + 1 < PlantGrowthLevel.Num())
 	{
-		FString GrowthMeshPath = PlantGrowthLevel[CurrentState.CurrentLevel + 1].MeshReference;
+		FString GrowthMeshPath = PlantGrowthLevel[CurrentState.CurrentLevel + 1].MeshPath;
 		LoadedMesh = LoadObject<UStaticMesh>(nullptr, *GrowthMeshPath);
 	}
-
 	if (LoadedMesh)
 	{
 		PlantMesh->SetStaticMesh(LoadedMesh);
@@ -99,6 +100,21 @@ void AFieldActor::Harvest()
 	}
 }
 
+int32 AFieldActor::GetState()
+{
+	return CurrentState.State;
+}
+
+bool AFieldActor::CheckHasPlant()
+{
+	return CurrentState.HavePlant;
+}
+
+bool AFieldActor::CheckCanHarvest()
+{
+	return CurrentState.CurrentLevel == PlantGrowthLevel.Num();
+}
+
 void AFieldActor::ClickFunction(const FString CurrentTool)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Click Field"));
@@ -110,13 +126,13 @@ void AFieldActor::ClickFunction(const FString CurrentTool)
 	//	// plant tomato
 	//}
 	//Growth();
-	PlantTomato();
 
 }
 
 void AFieldActor::BuyField()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("BuyField"));
-
+	CurrentState.State = 3;
+	CurrentState.Lock = false;
 }
 

@@ -23,9 +23,8 @@ public:
 	virtual void BeginPlay() override;
 
 	UMyBackpackWidget* MybackpackWidget;
-	void OnMouseClick();
-	int CurrentState;
 
+	void OnMouseClick();
 	void AddBackpackWidgetToViewport();
 	void RemoveBackpackWidgetToViewport();
 };
