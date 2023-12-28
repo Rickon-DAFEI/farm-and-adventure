@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/Image.h"
 #include "BackpackItemWidget.generated.h"
 
 /**
@@ -13,16 +15,20 @@ UCLASS()
 class SUBFARM_API UBackpackItemWidget : public UUserWidget
 {
 	GENERATED_BODY()
+	UPROPERTY(meta = (BindWidget))
+	UImage* ItemBkgUrl;
 
 	UPROPERTY(meta = (BindWidget))
-	FString ItemBkgUrl;
+	UImage* ItemContentUrl;
 
 	UPROPERTY(meta = (BindWidget))
-	FString ItemContentUrl;
-
-	UPROPERTY(meta = (BindWidget))
-	FString NumberText;
+	UTextBlock* NumberText;
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
 	TSubclassOf<UBackpackItemWidget> BackpackItemWidgetClass;
+	
+	UFUNCTION()
+	void SetItemContentImage(const FString& AssetPath, UImage* ImageWidget);
+	UFUNCTION()
+	void SetItemContentImage(const FString& AssetPath);
 };

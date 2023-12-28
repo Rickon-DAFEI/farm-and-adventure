@@ -65,4 +65,7 @@ class SUBFARM_API UMyItemObject : public UObject
 
 	UPROPERTY()
 	FMyItemTableStruct MyItemTableStruct;
+
+public:
+	static const FMyItemTableStruct* FindItemTableRow(int32 HashIndex);
 };

@@ -68,14 +68,6 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		P_THIS->BuyField();
 		P_NATIVE_END;
 	}
-	DEFINE_FUNCTION(AFieldActor::execClickFunction)
-	{
-		P_GET_PROPERTY(FStrProperty,Z_Param_CurrentTool);
-		P_FINISH;
-		P_NATIVE_BEGIN;
-		P_THIS->ClickFunction(Z_Param_CurrentTool);
-		P_NATIVE_END;
-	}
 	void AFieldActor::StaticRegisterNativesAFieldActor()
 	{
 		UClass* Class = AFieldActor::StaticClass();
@@ -83,7 +75,6 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 			{ "BuyField", &AFieldActor::execBuyField },
 			{ "CheckCanHarvest", &AFieldActor::execCheckCanHarvest },
 			{ "CheckHasPlant", &AFieldActor::execCheckHasPlant },
-			{ "ClickFunction", &AFieldActor::execClickFunction },
 			{ "GetState", &AFieldActor::execGetState },
 			{ "Growth", &AFieldActor::execGrowth },
 			{ "Harvest", &AFieldActor::execHarvest },
@@ -188,40 +179,6 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_CheckHasPlant_Statics::FuncParams);
-		}
-		return ReturnFunction;
-	}
-	struct Z_Construct_UFunction_AFieldActor_ClickFunction_Statics
-	{
-		struct FieldActor_eventClickFunction_Parms
-		{
-			FString CurrentTool;
-		};
-		static const UECodeGen_Private::FStrPropertyParams NewProp_CurrentTool;
-		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UECodeGen_Private::FFunctionParams FuncParams;
-	};
-	const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::NewProp_CurrentTool = { "CurrentTool", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FieldActor_eventClickFunction_Parms, CurrentTool), METADATA_PARAMS(0, nullptr) };
-	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::PropPointers[] = {
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::NewProp_CurrentTool,
-	};
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/FieldActor.h" },
-	};
-#endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFieldActor, nullptr, "ClickFunction", nullptr, nullptr, Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::PropPointers), sizeof(Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::FieldActor_eventClickFunction_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::Function_MetaDataParams) };
-	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::PropPointers) < 2048);
-	static_assert(sizeof(Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::FieldActor_eventClickFunction_Parms) < MAX_uint16);
-	UFunction* Z_Construct_UFunction_AFieldActor_ClickFunction()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_ClickFunction_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -395,7 +352,6 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		{ &Z_Construct_UFunction_AFieldActor_BuyField, "BuyField" }, // 2143471755
 		{ &Z_Construct_UFunction_AFieldActor_CheckCanHarvest, "CheckCanHarvest" }, // 2258740047
 		{ &Z_Construct_UFunction_AFieldActor_CheckHasPlant, "CheckHasPlant" }, // 780961622
-		{ &Z_Construct_UFunction_AFieldActor_ClickFunction, "ClickFunction" }, // 1011962261
 		{ &Z_Construct_UFunction_AFieldActor_GetState, "GetState" }, // 1275319023
 		{ &Z_Construct_UFunction_AFieldActor_Growth, "Growth" }, // 3871956682
 		{ &Z_Construct_UFunction_AFieldActor_Harvest, "Harvest" }, // 2091654410
@@ -475,9 +431,9 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 2269529487U) },
+		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 2044123727U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_4075738232(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_3627874841(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

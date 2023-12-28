@@ -19,7 +19,7 @@ public:
 	virtual void SetupInputComponent();
 	virtual void WheelUpFunction();
 	virtual void WheelDownFunction();
-
+	virtual void OnMouseMoveX(float AxisValue);
 	virtual void BeginPlay() override;
 
 	UMyBackpackWidget* MybackpackWidget;

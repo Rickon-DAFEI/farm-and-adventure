@@ -45,6 +45,7 @@ public:
 
 	virtual bool Initialize() override;
 
+
 	UFUNCTION()
 	void CloseBackpack();
 };

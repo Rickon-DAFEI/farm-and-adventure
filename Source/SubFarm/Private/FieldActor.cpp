@@ -35,7 +35,6 @@ void AFieldActor::BeginPlay()
 {
 	FTimerHandle TimerHandle;
 	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AFieldActor::Growth, 5.0f, true);
 }
 
 // Called every frame
@@ -45,26 +44,14 @@ void AFieldActor::Tick(float DeltaTime)
 	FHitResult HitResult;
 }
 
-FORCEINLINE static UDataTable* LoadDataTable(const FName& Path)
-{
-	return Cast<UDataTable>(StaticLoadObject(UDataTable::StaticClass(), nullptr, *Path.ToString()));
-} 
-
-
 void AFieldActor::Plant(int HashIndex)
 {
-	const FName RowName = FName(*FString::FromInt(HashIndex-2000));
-	const FName ItemInfoPath =
-		TEXT("/Script/Engine.DataTable'/Game/item.item'");
+	const FMyItemTableStruct* TableRow = UMyItemObject::FindItemTableRow(HashIndex);
 	
-	UDataTable* Table = LoadDataTable(ItemInfoPath);
-
-	const FMyItemTableStruct* TableRow = Table->FindRow<FMyItemTableStruct>(RowName, TEXT("GrowthSteps"));
-	if (Table)
+	if (TableRow)
 	{
 		const TArray<FGrowthStepsStruct>& GrowthSteps = TableRow->GrowthSteps;
 		const TArray<FOutcomeStruct>& Outcomes = TableRow->Outcome;
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("GrowthSteps"));
 		PlantGrowthLevel = GrowthSteps;
 		OutcomeList = Outcomes;
 		FString GrowthMeshPath = PlantGrowthLevel[0].MeshPath;
@@ -73,6 +60,8 @@ void AFieldActor::Plant(int HashIndex)
 		{
 			PlantMesh->SetStaticMesh(Mesh);
 			CurrentState.HavePlant = 1;
+			CurrentState.CurrentLevel = 1;
+
 		}
 	}
 }
@@ -120,19 +109,6 @@ bool AFieldActor::CheckCanHarvest()
 	return CurrentState.CurrentLevel == PlantGrowthLevel.Num();
 }
 
-void AFieldActor::ClickFunction(const FString CurrentTool)
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Click Field"));
-	if (CurrentState.State) {
-		BuyField();
-	}
-	// consume plant tomato
-	//if (true) {
-	//	// plant tomato
-	//}
-	//Growth();
-
-}
 
 void AFieldActor::BuyField()
 {

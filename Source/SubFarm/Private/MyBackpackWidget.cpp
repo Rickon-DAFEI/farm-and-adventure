@@ -3,7 +3,10 @@
 #include "MyBackpackWidget.h"
 #include "MyCharacter.h"
 #include "MyPlayerController.h"
+#include "MyItemObject.h"
 #include <Kismet/GameplayStatics.h>
+
+
 
 bool UMyBackpackWidget::Initialize()
 {
@@ -12,10 +15,10 @@ bool UMyBackpackWidget::Initialize()
 
 		//BackpackItems.Add(newItem);
 
-
-
 		return false;
 	}
+
+    TSubclassOf<UBackpackItemWidget> ItemWidgetClass = LoadClass<UBackpackItemWidget>(nullptr, TEXT("/Game/BP_BackpackItemWidget.BP_BackpackItemWidget_C"));
     AMyCharacter* PlayerCharacter = Cast<AMyCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
     if (PlayerCharacter)
     {
@@ -24,26 +27,25 @@ bool UMyBackpackWidget::Initialize()
         {
             int Key = Elem.Key;
             int Value = Elem.Value;
-
+            const FMyItemTableStruct* TableRow = UMyItemObject::FindItemTableRow(Key);
+            if (TableRow != nullptr) {
+                const FString& ImageReference = TableRow->ImageReference;
+                if (ItemWidgetClass != nullptr)
+                {
+                    UBackpackItemWidget* NewWidget = CreateWidget<UBackpackItemWidget>(this, ItemWidgetClass);
+                    if (WrapBox && NewWidget)
+                    {
+                        WrapBox->AddChildToWrapBox(NewWidget);
+                        
+                    }
+                }
+                CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
+            }
         }
     }
     // Load the UBackpackItemWidget class
-    TSubclassOf<UBackpackItemWidget> ItemWidgetClass = LoadClass<UBackpackItemWidget>(nullptr, TEXT("/Game/BP_BackpackItemWidget.BP_BackpackItemWidget_C"));
+    return true;
 
-    if (ItemWidgetClass != nullptr)
-    {
-        // Create an instance of UBackpackItemWidget
-        UBackpackItemWidget* NewWidget = CreateWidget<UBackpackItemWidget>(this, ItemWidgetClass);
-        // Assuming WrapBox is a valid pointer to a UWrapBox
-        if (WrapBox && NewWidget)
-        {
-            // Add the new widget to the WrapBox
-            WrapBox->AddChildToWrapBox(NewWidget);
-        }
-    }
-    CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
-
-	return true;
 }
 
 void UMyBackpackWidget::CloseBackpack()

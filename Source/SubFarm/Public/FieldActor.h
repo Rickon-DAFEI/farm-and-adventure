@@ -47,8 +47,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 	class UStaticMeshComponent* PlantMesh;
 
-	UFUNCTION()
-	void ClickFunction(FString CurrentTool);
 
 	UFUNCTION()
 	void BuyField();

@@ -26,8 +26,7 @@ struct FOutcomeStruct;
 	DECLARE_FUNCTION(execHarvest); \
 	DECLARE_FUNCTION(execGrowth); \
 	DECLARE_FUNCTION(execPlant); \
-	DECLARE_FUNCTION(execBuyField); \
-	DECLARE_FUNCTION(execClickFunction);
+	DECLARE_FUNCTION(execBuyField);
 
 
 #define FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_24_ACCESSORS

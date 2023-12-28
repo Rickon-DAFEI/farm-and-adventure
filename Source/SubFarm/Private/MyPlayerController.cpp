@@ -17,7 +17,7 @@ void AMyPlayerController::SetupInputComponent()
 	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	SetInputMode(InputMode);
 	InputComponent->BindAction("MouseClick", IE_Pressed, this, &AMyPlayerController::OnMouseClick);
-
+	InputComponent->BindAxis("MouseX", this, &AMyPlayerController::OnMouseMoveX);
 }
 
 void AMyPlayerController::WheelUpFunction()
@@ -40,6 +40,11 @@ void AMyPlayerController::WheelDownFunction()
 	}
 }
 
+void AMyPlayerController::OnMouseMoveX(float AxisValue)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Moving MouseX"));
+}
+
 void AMyPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -54,7 +59,6 @@ void AMyPlayerController::BeginPlay()
 
 void AMyPlayerController::OnMouseClick()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Clicked"));
 	FHitResult HitResult;
 	if (GetHitResultUnderCursorByChannel(UEngineTypes::ConvertToTraceType(ECollisionChannel::ECC_Visibility), false, HitResult))
 	{
@@ -71,7 +75,6 @@ void AMyPlayerController::OnMouseClick()
 				}
 				else if (!CurrentFieldActor->CheckHasPlant()) {
 					// get hand plant
-					CurrentFieldActor->ClickFunction("PlantTomato");
 					CurrentFieldActor->Plant(2001);
 				}
 				else if(CurrentFieldActor->CheckHasPlant()){
@@ -79,9 +82,7 @@ void AMyPlayerController::OnMouseClick()
 						CurrentFieldActor->Growth();
 					}
 					else {
-						CurrentFieldActor->ClickFunction("Harvest");
 						TArray<FOutcomeStruct> OutcomeList = CurrentFieldActor->Harvest();
-
 						if (GetPawn()) {
 							AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
 							if (MyCharacter) {
