@@ -9,6 +9,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FOutcomeStruct;
 #ifdef SUBFARM_FieldActor_generated_h
 #error "FieldActor.generated.h already included, missing '#pragma once' in FieldActor.h"
 #endif

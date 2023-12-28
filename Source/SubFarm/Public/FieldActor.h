@@ -33,6 +33,7 @@ protected:
 
 	PlantingState CurrentState;
 	TArray<FGrowthStepsStruct> PlantGrowthLevel;
+	TArray<FOutcomeStruct> OutcomeList;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -61,7 +62,7 @@ public:
 	void Growth();
 
 	UFUNCTION()
-	void Harvest();
+	TArray<FOutcomeStruct> Harvest();
 
 	UFUNCTION()
 	int32 GetState();

@@ -63,8 +63,10 @@ void AFieldActor::Plant(int HashIndex)
 	if (Table)
 	{
 		const TArray<FGrowthStepsStruct>& GrowthSteps = TableRow->GrowthSteps;
+		const TArray<FOutcomeStruct>& Outcomes = TableRow->Outcome;
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("GrowthSteps"));
 		PlantGrowthLevel = GrowthSteps;
+		OutcomeList = Outcomes;
 		FString GrowthMeshPath = PlantGrowthLevel[0].MeshPath;
 		UStaticMesh* Mesh = Cast<UStaticMesh>(StaticLoadObject(UStaticMesh::StaticClass(), nullptr, *GrowthMeshPath));
 		if (Mesh)
@@ -91,13 +93,16 @@ void AFieldActor::Growth()
 	CurrentState.CurrentLevel++;
 }
 
-void AFieldActor::Harvest()
+TArray<FOutcomeStruct> AFieldActor::Harvest()
 {
 	int maxLevel = PlantGrowthLevel.Num();
 	if (CurrentState.CurrentLevel == maxLevel) {
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Empty Field"));
 		PlantMesh->SetStaticMesh(nullptr);
+		return OutcomeList;
+
 	}
+	return TArray<FOutcomeStruct>();
 }
 
 int32 AFieldActor::GetState()

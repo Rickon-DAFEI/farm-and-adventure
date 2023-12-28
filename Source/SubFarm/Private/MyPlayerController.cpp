@@ -80,19 +80,15 @@ void AMyPlayerController::OnMouseClick()
 					}
 					else {
 						CurrentFieldActor->ClickFunction("Harvest");
+						TArray<FOutcomeStruct> OutcomeList = CurrentFieldActor->Harvest();
+
 						if (GetPawn()) {
 							AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
-							ItemNumber newItem;
-							newItem.HashIndex = 2002;
-							newItem.Number = 2;
-							TArray<ItemNumber> AddList;
-							AddList.Add(newItem);
 							if (MyCharacter) {
-								MyCharacter->AddBackpackItems(AddList);
+								MyCharacter->AddBackpackItems(OutcomeList);
 							}
 						}
 					}
-					CurrentFieldActor->Harvest();
 				}
 			}
 

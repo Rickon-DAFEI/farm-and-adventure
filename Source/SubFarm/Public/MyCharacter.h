@@ -17,6 +17,7 @@
 #include "TimerManager.h"
 #include "MyBackpack.h"
 #include "MyInterface.h"
+#include "MyItemObject.h"
 #include "MyCharacter.generated.h"
 
 UCLASS()
@@ -78,5 +79,5 @@ public:
 
 	float CameraHeight;
 
-	void AddBackpackItems(TArray<ItemNumber> AddList);
+	void AddBackpackItems(TArray<FOutcomeStruct> AddList);
 };

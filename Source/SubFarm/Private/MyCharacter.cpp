@@ -158,9 +158,10 @@ void AMyCharacter::Zoom(bool Dirction, float ZoomSpeed)
 
 }
 
-void AMyCharacter::AddBackpackItems(TArray<ItemNumber> AddList)
+void AMyCharacter::AddBackpackItems(TArray<FOutcomeStruct> AddList)
 {
-	for (const auto& AddItem : AddList) {
+	for (const FOutcomeStruct& AddItem : AddList)
+	{
 		PlayerBackpack.AlterItemNumber(AddItem.HashIndex, AddItem.Number);
 	}
 }
