@@ -27,8 +27,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
 	TSubclassOf<UBackpackItemWidget> BackpackItemWidgetClass;
 	
-	UFUNCTION()
-	void SetItemContentImage(const FString& AssetPath, UImage* ImageWidget);
-	UFUNCTION()
+	
 	void SetItemContentImage(const FString& AssetPath);
 };

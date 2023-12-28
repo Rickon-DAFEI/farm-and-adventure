@@ -39,11 +39,12 @@ bool UMyBackpackWidget::Initialize()
                         
                     }
                 }
-                CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
             }
         }
     }
     // Load the UBackpackItemWidget class
+    CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
+
     return true;
 
 }
