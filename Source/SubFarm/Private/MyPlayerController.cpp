@@ -85,7 +85,7 @@ void AMyPlayerController::OnMouseClick()
 						if (GetPawn()) {
 							AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
 							if (MyCharacter) {
-								MyCharacter->AddBackpackItems(OutcomeList);
+								MyCharacter->AddBackpackItems(&OutcomeList);
 							}
 						}
 					}

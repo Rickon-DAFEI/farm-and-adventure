@@ -79,5 +79,5 @@ public:
 
 	float CameraHeight;
 
-	void AddBackpackItems(TArray<FOutcomeStruct> AddList);
+	void AddBackpackItems(TArray<FOutcomeStruct> *AddList);
 };
