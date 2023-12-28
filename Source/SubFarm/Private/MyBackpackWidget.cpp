@@ -36,7 +36,7 @@ bool UMyBackpackWidget::Initialize()
                     if (WrapBox && NewWidget)
                     {
                         NewWidget->SetItemContentImage(ImageReference);
-                        NewWidget->SetNumber(Value);
+                        NewWidget->SetItemNumber(Value);
                         WrapBox->AddChildToWrapBox(NewWidget);
                         
                     }

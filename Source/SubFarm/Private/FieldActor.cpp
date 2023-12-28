@@ -70,16 +70,16 @@ void AFieldActor::Growth()
 {
 	int maxLevel = PlantGrowthLevel.Num();
 	UStaticMesh* LoadedMesh = nullptr;
-	if (CurrentState.CurrentLevel + 1 < PlantGrowthLevel.Num())
+	if (CurrentState.CurrentLevel < PlantGrowthLevel.Num())
 	{
-		FString GrowthMeshPath = PlantGrowthLevel[CurrentState.CurrentLevel + 1].MeshPath;
+		FString GrowthMeshPath = PlantGrowthLevel[CurrentState.CurrentLevel].MeshPath;
 		LoadedMesh = LoadObject<UStaticMesh>(nullptr, *GrowthMeshPath);
 	}
 	if (LoadedMesh)
 	{
 		PlantMesh->SetStaticMesh(LoadedMesh);
+		CurrentState.CurrentLevel++;
 	}
-	CurrentState.CurrentLevel++;
 }
 
 TArray<FOutcomeStruct> AFieldActor::Harvest()
@@ -88,6 +88,7 @@ TArray<FOutcomeStruct> AFieldActor::Harvest()
 	if (CurrentState.CurrentLevel == maxLevel) {
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Empty Field"));
 		PlantMesh->SetStaticMesh(nullptr);
+		CurrentState.CurrentLevel = 0;
 		return OutcomeList;
 
 	}
