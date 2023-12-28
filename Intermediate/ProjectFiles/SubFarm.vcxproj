@@ -195,6 +195,7 @@
     <None Include="..\..\Source\SubFarmEditor.Target.cs"/>
     <None Include="..\..\.gitattributes"/>
     <None Include="..\..\.gitignore"/>
+    <None Include="..\..\.vsconfig"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>
@@ -276,6 +277,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SubFarm\Private\MyItemObject.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SubFarm\Private\MyObject.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -330,6 +336,7 @@
     <ClInclude Include="..\..\Source\SubFarm\Public\MyHealthWidget.h"/>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyHUD.h"/>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyInterface.h"/>
+    <ClInclude Include="..\..\Source\SubFarm\Public\MyItemObject.h"/>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyObject.h"/>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyPawn.h"/>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyPlayerController.h"/>

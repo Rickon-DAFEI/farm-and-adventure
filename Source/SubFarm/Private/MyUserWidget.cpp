@@ -18,7 +18,6 @@ void UMyUserWidget::OpenBackpack()
 	{
 		MyController->AddBackpackWidgetToViewport();
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("open backpack"));
 }
 
 //void UMyUserWidget::Start()

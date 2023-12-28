@@ -2,6 +2,7 @@
 
 #include "MyBackpackWidget.h"
 #include "MyCharacter.h"
+#include "MyPlayerController.h"
 #include <Kismet/GameplayStatics.h>
 
 bool UMyBackpackWidget::Initialize()
@@ -15,11 +16,6 @@ bool UMyBackpackWidget::Initialize()
 
 		return false;
 	}
-	return false;
-}
-
-void UMyBackpackWidget::FreshBackPack()
-{
     AMyCharacter* PlayerCharacter = Cast<AMyCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
     if (PlayerCharacter)
     {
@@ -28,9 +24,7 @@ void UMyBackpackWidget::FreshBackPack()
         {
             int Key = Elem.Key;
             int Value = Elem.Value;
-            // 在这里处理每个键值对
-            // 例如，打印键和值
-            UE_LOG(LogTemp, Warning, TEXT("Item: %d, Quantity: %d"), Key, Value);
+
         }
     }
     // Load the UBackpackItemWidget class
@@ -46,5 +40,18 @@ void UMyBackpackWidget::FreshBackPack()
             // Add the new widget to the WrapBox
             WrapBox->AddChildToWrapBox(NewWidget);
         }
+    }
+    CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
+
+	return true;
+}
+
+void UMyBackpackWidget::CloseBackpack()
+{
+    AMyPlayerController* MyController = Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController());
+    if (MyController)
+    {
+
+        MyController->RemoveBackpackWidgetToViewport();
     }
 }

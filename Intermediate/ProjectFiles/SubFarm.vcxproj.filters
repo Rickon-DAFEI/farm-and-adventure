@@ -13,6 +13,7 @@
     </None>
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
+    <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -85,6 +86,9 @@
     <ClCompile Include="..\..\Source\SubFarm\Private\MyInterface.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SubFarm\Private\MyItemObject.cpp">
+      <Filter>Source\SubFarm\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SubFarm\Private\MyObject.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
@@ -152,6 +156,9 @@
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyInterface.h">
+      <Filter>Source\SubFarm\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SubFarm\Public\MyItemObject.h">
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\MyObject.h">

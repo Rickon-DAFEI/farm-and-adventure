@@ -35,10 +35,16 @@ public:
 	UButton* SwitchButton;
 
 	UPROPERTY(meta = (BindWidget))
+	UButton* CloseButton;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* CloseImage;
+
+	UPROPERTY(meta = (BindWidget))
 	UWrapBox* WrapBox;
 
 	virtual bool Initialize() override;
 
 	UFUNCTION()
-	void FreshBackPack();
+	void CloseBackpack();
 };

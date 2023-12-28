@@ -17,22 +17,22 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 	UMG_API UClass* Z_Construct_UClass_UWrapBox_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_SubFarm();
 // End Cross Module References
-	DEFINE_FUNCTION(UMyBackpackWidget::execFreshBackPack)
+	DEFINE_FUNCTION(UMyBackpackWidget::execCloseBackpack)
 	{
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->FreshBackPack();
+		P_THIS->CloseBackpack();
 		P_NATIVE_END;
 	}
 	void UMyBackpackWidget::StaticRegisterNativesUMyBackpackWidget()
 	{
 		UClass* Class = UMyBackpackWidget::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
-			{ "FreshBackPack", &UMyBackpackWidget::execFreshBackPack },
+			{ "CloseBackpack", &UMyBackpackWidget::execCloseBackpack },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
-	struct Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics
+	struct Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack_Statics
 	{
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
@@ -40,17 +40,17 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::Function_MetaDataParams[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Public/MyBackpackWidget.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMyBackpackWidget, nullptr, "FreshBackPack", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::Function_MetaDataParams), Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::Function_MetaDataParams) };
-	UFunction* Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack()
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMyBackpackWidget, nullptr, "CloseBackpack", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack_Statics::Function_MetaDataParams), Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack_Statics::FuncParams);
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -83,6 +83,14 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_SwitchButton;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CloseButton_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_CloseButton;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CloseImage_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_CloseImage;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_WrapBox_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_WrapBox;
@@ -96,7 +104,7 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_UMyBackpackWidget_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_UMyBackpackWidget_FreshBackPack, "FreshBackPack" }, // 1958753827
+		{ &Z_Construct_UFunction_UMyBackpackWidget_CloseBackpack, "CloseBackpack" }, // 3712678927
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -141,6 +149,22 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_SwitchButton = { "SwitchButton", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMyBackpackWidget, SwitchButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_SwitchButton_MetaData), Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_SwitchButton_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseButton_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/MyBackpackWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseButton = { "CloseButton", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMyBackpackWidget, CloseButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseButton_MetaData), Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseButton_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseImage_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/MyBackpackWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseImage = { "CloseImage", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMyBackpackWidget, CloseImage), Z_Construct_UClass_UImage_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseImage_MetaData), Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseImage_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_WrapBox_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
@@ -153,6 +177,8 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_MainImage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_PlantImage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_SwitchButton,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseButton,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_CloseImage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyBackpackWidget_Statics::NewProp_WrapBox,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UMyBackpackWidget_Statics::StaticCppClassTypeInfo = {
@@ -194,9 +220,9 @@ void EmptyLinkFunctionForGeneratedCodeMyBackpackWidget() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UMyBackpackWidget, UMyBackpackWidget::StaticClass, TEXT("UMyBackpackWidget"), &Z_Registration_Info_UClass_UMyBackpackWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyBackpackWidget), 1512467840U) },
+		{ Z_Construct_UClass_UMyBackpackWidget, UMyBackpackWidget::StaticClass, TEXT("UMyBackpackWidget"), &Z_Registration_Info_UClass_UMyBackpackWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyBackpackWidget), 1395170860U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_3290336328(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_1062347756(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyBackpackWidget_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
