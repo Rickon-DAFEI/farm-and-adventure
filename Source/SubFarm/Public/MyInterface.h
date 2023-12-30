@@ -22,6 +22,6 @@ class SUBFARM_API IMyInterface
 
 public:
 
-	virtual void Attack() {};
-	virtual void CaclulateHealth() {};
+	virtual void IsLookAt() {};
+	virtual void EndLookAt() {};
 };

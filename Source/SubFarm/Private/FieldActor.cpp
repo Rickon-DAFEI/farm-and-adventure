@@ -33,7 +33,6 @@ AFieldActor::AFieldActor()
 // Called when the game starts or when spawned
 void AFieldActor::BeginPlay()
 {
-	FTimerHandle TimerHandle;
 	Super::BeginPlay();
 }
 
@@ -42,6 +41,22 @@ void AFieldActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	FHitResult HitResult;
+}
+
+void AFieldActor::IsLookAt()
+{
+	if (FieldMesh)
+	{
+		FieldMesh->SetRenderCustomDepth(true);
+	}
+}
+
+void AFieldActor::EndLookAt()
+{
+	if (FieldMesh)
+	{
+		FieldMesh->SetRenderCustomDepth(false);
+	}
 }
 
 void AFieldActor::Plant(int HashIndex)
@@ -61,7 +76,7 @@ void AFieldActor::Plant(int HashIndex)
 			PlantMesh->SetStaticMesh(Mesh);
 			CurrentState.HavePlant = 1;
 			CurrentState.CurrentLevel = 1;
-
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AFieldActor::Growth, PlantGrowthLevel[0].NeedTime,false);
 		}
 	}
 }
@@ -78,6 +93,7 @@ void AFieldActor::Growth()
 	if (LoadedMesh)
 	{
 		PlantMesh->SetStaticMesh(LoadedMesh);
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AFieldActor::Growth, PlantGrowthLevel[CurrentState.CurrentLevel].NeedTime, false);
 		CurrentState.CurrentLevel++;
 	}
 }
@@ -89,6 +105,8 @@ TArray<FOutcomeStruct> AFieldActor::Harvest()
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Empty Field"));
 		PlantMesh->SetStaticMesh(nullptr);
 		CurrentState.CurrentLevel = 0;
+		CurrentState.HavePlant = 0;
+		GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
 		return OutcomeList;
 
 	}

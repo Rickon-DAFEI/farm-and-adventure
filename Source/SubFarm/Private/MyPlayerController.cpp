@@ -57,6 +57,61 @@ void AMyPlayerController::BeginPlay()
 
 }
 
+void AMyPlayerController::MouseMovementTrack() {
+	float MouseX, MouseY;
+	if (GetMousePosition(MouseX, MouseY))
+	{
+		FVector WorldLocation;
+		FVector WorldDirection;
+
+		if (DeprojectScreenPositionToWorld(MouseX, MouseY, WorldLocation, WorldDirection))
+		{
+			FVector StartLocation = WorldLocation;
+			FVector EndLocation = StartLocation + WorldDirection * 10000;
+
+			FHitResult HitResult;
+			bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility);
+			if (bHit)
+			{
+				AActor* HitActor = HitResult.GetActor();
+				if (HitActor != PreviousHitActor)
+				{
+					if (PreviousHitActor)
+					{
+						IMyInterface* Interface = Cast<IMyInterface>(PreviousHitActor);
+						if (Interface)
+						{
+							Interface->EndLookAt();
+
+						}
+					}
+
+					PreviousHitActor = HitActor;
+
+					IMyInterface* Interface = Cast<IMyInterface>(HitActor);
+					if (Interface)
+					{
+						FVector PlayerLocation = GetPawn()->GetActorLocation();
+
+						float Distance = FVector::Dist(PlayerLocation, HitActor->GetActorLocation());
+
+						float TriggerDistance = 500.0f; // 例如，500个单位
+						if (Distance < TriggerDistance) {
+							Interface->IsLookAt();
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void AMyPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	MouseMovementTrack();
+}
+
 void AMyPlayerController::OnMouseClick()
 {
 	FHitResult HitResult;
@@ -78,10 +133,7 @@ void AMyPlayerController::OnMouseClick()
 					CurrentFieldActor->Plant(2001);
 				}
 				else if(CurrentFieldActor->CheckHasPlant()){
-					if (!CurrentFieldActor->CheckCanHarvest()) {
-						CurrentFieldActor->Growth();
-					}
-					else {
+					if (CurrentFieldActor->CheckCanHarvest()) {
 						TArray<FOutcomeStruct> OutcomeList = CurrentFieldActor->Harvest();
 						if (GetPawn()) {
 							AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());

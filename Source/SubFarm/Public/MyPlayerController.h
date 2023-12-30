@@ -14,17 +14,22 @@ UCLASS()
 class SUBFARM_API AMyPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
+
+private:
+	AActor* PreviousHitActor = nullptr;
+
 public:
 	virtual void SetupInputComponent();
 	virtual void WheelUpFunction();
 	virtual void WheelDownFunction();
 	virtual void OnMouseMoveX(float AxisValue);
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 	UMyBackpackWidget* MybackpackWidget;
 
 	void OnMouseClick();
 	void AddBackpackWidgetToViewport();
 	void RemoveBackpackWidgetToViewport();
+	void MouseMovementTrack();
 };

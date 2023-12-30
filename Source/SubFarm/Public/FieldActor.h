@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "MyItemObject.h"
+#include "MyInterface.h"
 #include "FieldActor.generated.h"
 
 struct PlantingState
@@ -19,7 +20,7 @@ struct PlantingState
 };
 
 UCLASS()
-class SUBFARM_API AFieldActor : public AActor
+class SUBFARM_API AFieldActor : public AActor, public IMyInterface
 {
 	GENERATED_BODY()
 	
@@ -34,9 +35,16 @@ protected:
 	PlantingState CurrentState;
 	TArray<FGrowthStepsStruct> PlantGrowthLevel;
 	TArray<FOutcomeStruct> OutcomeList;
+
+	FTimerHandle TimerHandle;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+
+	virtual void IsLookAt() override;
+	virtual void EndLookAt() override;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 	class USceneComponent* MyScene;
@@ -70,4 +78,6 @@ public:
 
 	UFUNCTION()
 	bool CheckCanHarvest();
+
+
 };

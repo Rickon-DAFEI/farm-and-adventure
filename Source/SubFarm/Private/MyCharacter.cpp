@@ -48,8 +48,8 @@ void AMyCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext,0);
 		}
 	}
-	Attack();
-	CaclulateHealth();
+	//Attack();
+	//CaclulateHealth();
 	GetWorld()->GetTimerManager().SetTimer(Time,this,&AMyCharacter::PrintTime,1.0,true);
 
 	if (Time.IsValid()) {
@@ -61,26 +61,6 @@ void AMyCharacter::BeginPlay()
 void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	StartLocation = MyCamera->GetComponentLocation();
-	ForwardVector = MyCamera->GetForwardVector();
-	EndLocation = StartLocation + ForwardVector * 10000;
-	//bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility);
-	//if (bHit) {
-	//	AActor* HitActor = HitResult.GetActor();
-	//	FVector ImpactPoint = HitResult.ImpactPoint;
-	//	FVector HitLocation = HitResult.Location;
-	//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%s"),*HitActor->GetName()));
-	//}
-
-	//FCollisionObjectQueryParams objectType;
-	//objectType.AddObjectTypesToQuery(ECC_WorldDynamic);
-	//bool bHit2 = GetWorld()->LineTraceSingleByObjectType(HitResult, StartLocation, EndLocation, objectType);
-	//if (bHit2) {
-	//	AActor* HitActor2 = HitResult.GetActor();
-	//	FVector ImpactPoint2 = HitResult.ImpactPoint;
-	//	FVector HitLocation2 = HitResult.Location;
-	//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%s"), *HitActor2->GetName()));
-	//}
 }
 
 // Called to bind functionality to input
@@ -127,16 +107,16 @@ float AMyCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEve
 	return 0.0f;
 }
 
-void AMyCharacter::Attack()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Attack"));
-
-}
-
-void AMyCharacter::CaclulateHealth()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("CaclulateHealth"));
-}
+//void AMyCharacter::Attack()
+//{
+//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Attack"));
+//
+//}
+//
+//void AMyCharacter::CaclulateHealth()
+//{
+//	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("CaclulateHealth"));
+//}
 
 void AMyCharacter::PrintTime()
 {

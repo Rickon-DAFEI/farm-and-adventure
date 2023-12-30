@@ -69,8 +69,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 	UWidgetComponent* MyWidgetHealth;
 
-	virtual void Attack() override;
-	virtual void CaclulateHealth() override;
+	//virtual void Attack() override;
+	//virtual void CaclulateHealth() override;
 
 	FTimerHandle Time;
 	void PrintTime();

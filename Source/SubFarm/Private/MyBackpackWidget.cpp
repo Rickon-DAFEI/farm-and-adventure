@@ -44,6 +44,7 @@ bool UMyBackpackWidget::Initialize()
             }
         }
     }
+    PlantImage->SetVisibility(ESlateVisibility::Collapsed);
     // Load the UBackpackItemWidget class
     CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
     return true;

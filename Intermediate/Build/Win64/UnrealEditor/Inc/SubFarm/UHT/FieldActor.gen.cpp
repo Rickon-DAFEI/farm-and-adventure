@@ -15,6 +15,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	SUBFARM_API UClass* Z_Construct_UClass_AFieldActor();
 	SUBFARM_API UClass* Z_Construct_UClass_AFieldActor_NoRegister();
+	SUBFARM_API UClass* Z_Construct_UClass_UMyInterface_NoRegister();
 	SUBFARM_API UScriptStruct* Z_Construct_UScriptStruct_FOutcomeStruct();
 	UPackage* Z_Construct_UPackage__Script_SubFarm();
 // End Cross Module References
@@ -340,6 +341,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_PlantMesh;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+		static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
@@ -393,6 +395,10 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFieldActor_Statics::NewProp_FieldMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFieldActor_Statics::NewProp_PlantMesh,
 	};
+		const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AFieldActor_Statics::InterfaceParams[] = {
+			{ Z_Construct_UClass_UMyInterface_NoRegister, (int32)VTABLE_OFFSET(AFieldActor, IMyInterface), false },  // 3521627962
+		};
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFieldActor_Statics::InterfaceParams) < 64);
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AFieldActor_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AFieldActor>::IsAbstract,
 	};
@@ -403,11 +409,11 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		DependentSingletons,
 		FuncInfo,
 		Z_Construct_UClass_AFieldActor_Statics::PropPointers,
-		nullptr,
+		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
 		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_AFieldActor_Statics::PropPointers),
-		0,
+		UE_ARRAY_COUNT(InterfaceParams),
 		0x009000A4u,
 		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFieldActor_Statics::Class_MetaDataParams), Z_Construct_UClass_AFieldActor_Statics::Class_MetaDataParams)
 	};
@@ -431,9 +437,9 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 2044123727U) },
+		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 3276770729U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_3627874841(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_1839649540(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
