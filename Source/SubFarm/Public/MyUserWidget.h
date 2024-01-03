@@ -16,6 +16,8 @@ UCLASS()
 class SUBFARM_API UMyUserWidget : public UUserWidget
 {
 	GENERATED_BODY()
+protected:
+	FTimerHandle TimerHandle;
 	
 public:
 	//UPROPERTY(meta = (BindWidget))
@@ -47,6 +49,12 @@ public:
 
 	UFUNCTION()
 	void OpenBackpack();
+
+	UFUNCTION()
+	void AlterMoney(int alterNumber);
+
+	UFUNCTION()
+	void UpdateMoneyWidget();
 	//UFUNCTION()
 	//void Quit();
 

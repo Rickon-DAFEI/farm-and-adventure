@@ -69,6 +69,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 	UWidgetComponent* MyWidgetHealth;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySceneComponent")
+	bool IsDigging;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySceneComponent")
+	bool IsPlanting;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySceneComponent")
+	bool IsHarvesting;
 	//virtual void Attack() override;
 	//virtual void CaclulateHealth() override;
 

@@ -8,6 +8,8 @@ bool UMyUserWidget::Initialize()
 		return false;
 	}
 	BackpackButton->OnClicked.AddDynamic(this, &UMyUserWidget::OpenBackpack);
+	Money = 1000;
+	UpdateMoneyWidget();
 	return true;
 }
 
@@ -18,6 +20,20 @@ void UMyUserWidget::OpenBackpack()
 	{
 		MyController->AddBackpackWidgetToViewport();
 	}
+}
+
+void UMyUserWidget::AlterMoney(int alterNumber)
+{
+	FString TextString = FString::Printf(TEXT("%d %d"), Money, alterNumber);
+	FText TextValue = FText::FromString(TextString);
+	Money += alterNumber;
+	MoneyText->SetText(TextValue);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UMyUserWidget::UpdateMoneyWidget, 3.0f, false);
+}
+
+void UMyUserWidget::UpdateMoneyWidget()
+{
+	MoneyText->SetText(FText::AsNumber(Money));
 }
 
 //void UMyUserWidget::Start()

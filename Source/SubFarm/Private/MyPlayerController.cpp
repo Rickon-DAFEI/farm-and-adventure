@@ -51,9 +51,8 @@ void AMyPlayerController::BeginPlay()
 	UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyUserWidget.BP_MyUserWidget_C'"));
 	/// Script / UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget'
 	//UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C''"));
-	UUserWidget* MyWidgetClass = nullptr;
-	MyWidgetClass = CreateWidget<UUserWidget>(GetWorld(),widgetClass);
-	MyWidgetClass->AddToViewport();
+	MyUserWidget = CreateWidget<UMyUserWidget>(GetWorld(),widgetClass);
+	MyUserWidget->AddToViewport();
 
 }
 
@@ -116,6 +115,10 @@ void AMyPlayerController::Tick(float DeltaTime)
 void AMyPlayerController::OnMouseClick()
 {
 	FHitResult HitResult;
+	AMyCharacter* MyCharacter = nullptr;
+	if (GetPawn()) {
+		MyCharacter = Cast<AMyCharacter>(GetPawn());
+	}
 	if (GetHitResultUnderCursorByChannel(UEngineTypes::ConvertToTraceType(ECollisionChannel::ECC_Visibility), false, HitResult))
 	{
 		if (HitResult.GetActor() != nullptr)
@@ -127,7 +130,11 @@ void AMyPlayerController::OnMouseClick()
 				AFieldActor* CurrentFieldActor = Cast<AFieldActor>(HitActor);
 				if (CurrentFieldActor->GetState()==1) {
 					// unlock
-					CurrentFieldActor->BuyField();
+					int NeedMoney = CurrentFieldActor->BuyField();
+					MyUserWidget->AlterMoney(-NeedMoney);
+					if (MyCharacter) {
+						MyCharacter->IsDigging = true;
+					}
 				}
 				else if (!CurrentFieldActor->CheckHasPlant()) {
 					// get hand plant
@@ -136,8 +143,7 @@ void AMyPlayerController::OnMouseClick()
 				else if(CurrentFieldActor->CheckHasPlant()){
 					if (CurrentFieldActor->CheckCanHarvest()) {
 						TArray<FOutcomeStruct> OutcomeList = CurrentFieldActor->Harvest();
-						if (GetPawn()) {
-							AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
+						if (MyCharacter) {
 							if (MyCharacter) {
 								MyCharacter->AddBackpackItems(&OutcomeList);
 							}

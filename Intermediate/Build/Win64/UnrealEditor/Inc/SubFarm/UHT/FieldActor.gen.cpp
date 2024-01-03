@@ -66,7 +66,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	{
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->BuyField();
+		*(int32*)Z_Param__Result=P_THIS->BuyField();
 		P_NATIVE_END;
 	}
 	void AFieldActor::StaticRegisterNativesAFieldActor()
@@ -85,17 +85,29 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	}
 	struct Z_Construct_UFunction_AFieldActor_BuyField_Statics
 	{
+		struct FieldActor_eventBuyField_Parms
+		{
+			int32 ReturnValue;
+		};
+		static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AFieldActor_BuyField_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FieldActor_eventBuyField_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFieldActor_BuyField_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFieldActor_BuyField_Statics::NewProp_ReturnValue,
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFieldActor_BuyField_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Public/FieldActor.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFieldActor_BuyField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFieldActor, nullptr, "BuyField", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_BuyField_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFieldActor_BuyField_Statics::Function_MetaDataParams) };
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFieldActor_BuyField_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFieldActor, nullptr, "BuyField", nullptr, nullptr, Z_Construct_UFunction_AFieldActor_BuyField_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_BuyField_Statics::PropPointers), sizeof(Z_Construct_UFunction_AFieldActor_BuyField_Statics::FieldActor_eventBuyField_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_BuyField_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFieldActor_BuyField_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_BuyField_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_AFieldActor_BuyField_Statics::FieldActor_eventBuyField_Parms) < MAX_uint16);
 	UFunction* Z_Construct_UFunction_AFieldActor_BuyField()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -351,7 +363,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFieldActor_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_AFieldActor_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AFieldActor_BuyField, "BuyField" }, // 2143471755
+		{ &Z_Construct_UFunction_AFieldActor_BuyField, "BuyField" }, // 4221596185
 		{ &Z_Construct_UFunction_AFieldActor_CheckCanHarvest, "CheckCanHarvest" }, // 2258740047
 		{ &Z_Construct_UFunction_AFieldActor_CheckHasPlant, "CheckHasPlant" }, // 780961622
 		{ &Z_Construct_UFunction_AFieldActor_GetState, "GetState" }, // 1275319023
@@ -437,9 +449,9 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 3276770729U) },
+		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 4005142444U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_1839649540(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_1352492881(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

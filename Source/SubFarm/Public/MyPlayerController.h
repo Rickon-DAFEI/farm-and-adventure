@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "MyBackpackWidget.h"
+#include "MyUserWidget.h"
 #include "MyPlayerController.generated.h"
 
 /**d
@@ -27,6 +28,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UMyBackpackWidget* MybackpackWidget;
+	UMyUserWidget* MyUserWidget;
 
 	void OnMouseClick();
 	void AddBackpackWidgetToViewport();

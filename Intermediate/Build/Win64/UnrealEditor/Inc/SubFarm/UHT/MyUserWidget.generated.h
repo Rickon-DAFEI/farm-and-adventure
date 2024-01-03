@@ -19,6 +19,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyUserWidget_h_18_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyUserWidget_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execUpdateMoneyWidget); \
+	DECLARE_FUNCTION(execAlterMoney); \
 	DECLARE_FUNCTION(execOpenBackpack);
 
 

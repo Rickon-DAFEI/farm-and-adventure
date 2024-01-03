@@ -57,7 +57,7 @@ public:
 
 
 	UFUNCTION()
-	void BuyField();
+	int BuyField();
 
 	//void PlantTomato();
 	
@@ -78,6 +78,8 @@ public:
 
 	UFUNCTION()
 	bool CheckCanHarvest();
+
+
 
 
 };

@@ -17,6 +17,21 @@ void EmptyLinkFunctionForGeneratedCodeMyUserWidget() {}
 	UMG_API UClass* Z_Construct_UClass_UUserWidget();
 	UPackage* Z_Construct_UPackage__Script_SubFarm();
 // End Cross Module References
+	DEFINE_FUNCTION(UMyUserWidget::execUpdateMoneyWidget)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->UpdateMoneyWidget();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UMyUserWidget::execAlterMoney)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_alterNumber);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AlterMoney(Z_Param_alterNumber);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UMyUserWidget::execOpenBackpack)
 	{
 		P_FINISH;
@@ -28,9 +43,45 @@ void EmptyLinkFunctionForGeneratedCodeMyUserWidget() {}
 	{
 		UClass* Class = UMyUserWidget::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "AlterMoney", &UMyUserWidget::execAlterMoney },
 			{ "OpenBackpack", &UMyUserWidget::execOpenBackpack },
+			{ "UpdateMoneyWidget", &UMyUserWidget::execUpdateMoneyWidget },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics
+	{
+		struct MyUserWidget_eventAlterMoney_Parms
+		{
+			int32 alterNumber;
+		};
+		static const UECodeGen_Private::FIntPropertyParams NewProp_alterNumber;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::NewProp_alterNumber = { "alterNumber", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MyUserWidget_eventAlterMoney_Parms, alterNumber), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::NewProp_alterNumber,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/MyUserWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMyUserWidget, nullptr, "AlterMoney", nullptr, nullptr, Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::PropPointers), sizeof(Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::MyUserWidget_eventAlterMoney_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::Function_MetaDataParams), Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::MyUserWidget_eventAlterMoney_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_UMyUserWidget_AlterMoney()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyUserWidget_AlterMoney_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_UMyUserWidget_OpenBackpack_Statics
 	{
@@ -51,6 +102,28 @@ void EmptyLinkFunctionForGeneratedCodeMyUserWidget() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyUserWidget_OpenBackpack_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/MyUserWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMyUserWidget, nullptr, "UpdateMoneyWidget", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget_Statics::Function_MetaDataParams), Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -96,7 +169,9 @@ void EmptyLinkFunctionForGeneratedCodeMyUserWidget() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UMyUserWidget_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_UMyUserWidget_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UMyUserWidget_AlterMoney, "AlterMoney" }, // 2266376994
 		{ &Z_Construct_UFunction_UMyUserWidget_OpenBackpack, "OpenBackpack" }, // 2901656152
+		{ &Z_Construct_UFunction_UMyUserWidget_UpdateMoneyWidget, "UpdateMoneyWidget" }, // 888305304
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UMyUserWidget_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -205,9 +280,9 @@ void EmptyLinkFunctionForGeneratedCodeMyUserWidget() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyUserWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UMyUserWidget, UMyUserWidget::StaticClass, TEXT("UMyUserWidget"), &Z_Registration_Info_UClass_UMyUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyUserWidget), 676582253U) },
+		{ Z_Construct_UClass_UMyUserWidget, UMyUserWidget::StaticClass, TEXT("UMyUserWidget"), &Z_Registration_Info_UClass_UMyUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyUserWidget), 42050735U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyUserWidget_h_3657601328(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyUserWidget_h_2301664024(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_MyUserWidget_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -129,10 +129,10 @@ bool AFieldActor::CheckCanHarvest()
 }
 
 
-void AFieldActor::BuyField()
+int AFieldActor::BuyField()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("BuyField"));
 	CurrentState.State = 3;
 	CurrentState.Lock = false;
+	return CurrentState.Worth;
 }
 
