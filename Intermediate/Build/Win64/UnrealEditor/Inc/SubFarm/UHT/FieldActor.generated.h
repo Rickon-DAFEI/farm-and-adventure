@@ -20,6 +20,7 @@ struct FOutcomeStruct;
 #define FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_25_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_25_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execCultivate); \
 	DECLARE_FUNCTION(execCheckCanHarvest); \
 	DECLARE_FUNCTION(execCheckHasPlant); \
 	DECLARE_FUNCTION(execGetState); \

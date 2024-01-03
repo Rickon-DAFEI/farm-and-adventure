@@ -10,7 +10,7 @@
 
 struct PlantingState
 {
-	int32 State; //unLock:1 Dry:0 Normal:3
+	int32 State; //unLock:0 uncultivated:1
 	float WeedsTime;
 	float LastWeedingTime;
 	int32 Worth;
@@ -79,7 +79,8 @@ public:
 	UFUNCTION()
 	bool CheckCanHarvest();
 
-
+	UFUNCTION()
+	void Cultivate();
 
 
 };

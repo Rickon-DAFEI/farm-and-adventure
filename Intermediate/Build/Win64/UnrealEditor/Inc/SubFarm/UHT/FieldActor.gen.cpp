@@ -19,6 +19,13 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	SUBFARM_API UScriptStruct* Z_Construct_UScriptStruct_FOutcomeStruct();
 	UPackage* Z_Construct_UPackage__Script_SubFarm();
 // End Cross Module References
+	DEFINE_FUNCTION(AFieldActor::execCultivate)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Cultivate();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AFieldActor::execCheckCanHarvest)
 	{
 		P_FINISH;
@@ -76,6 +83,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 			{ "BuyField", &AFieldActor::execBuyField },
 			{ "CheckCanHarvest", &AFieldActor::execCheckCanHarvest },
 			{ "CheckHasPlant", &AFieldActor::execCheckHasPlant },
+			{ "Cultivate", &AFieldActor::execCultivate },
 			{ "GetState", &AFieldActor::execGetState },
 			{ "Growth", &AFieldActor::execGrowth },
 			{ "Harvest", &AFieldActor::execHarvest },
@@ -192,6 +200,28 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_CheckHasPlant_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AFieldActor_Cultivate_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFieldActor_Cultivate_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/FieldActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFieldActor_Cultivate_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFieldActor, nullptr, "Cultivate", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_Cultivate_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFieldActor_Cultivate_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AFieldActor_Cultivate()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_Cultivate_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -366,6 +396,7 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		{ &Z_Construct_UFunction_AFieldActor_BuyField, "BuyField" }, // 4221596185
 		{ &Z_Construct_UFunction_AFieldActor_CheckCanHarvest, "CheckCanHarvest" }, // 2258740047
 		{ &Z_Construct_UFunction_AFieldActor_CheckHasPlant, "CheckHasPlant" }, // 780961622
+		{ &Z_Construct_UFunction_AFieldActor_Cultivate, "Cultivate" }, // 548173132
 		{ &Z_Construct_UFunction_AFieldActor_GetState, "GetState" }, // 1275319023
 		{ &Z_Construct_UFunction_AFieldActor_Growth, "Growth" }, // 3871956682
 		{ &Z_Construct_UFunction_AFieldActor_Harvest, "Harvest" }, // 2091654410
@@ -449,9 +480,9 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 4005142444U) },
+		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 2468383317U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_1352492881(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_295816547(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

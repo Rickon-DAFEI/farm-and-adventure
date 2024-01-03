@@ -106,11 +106,14 @@ void AMyPlayerController::MouseMovementTrack() {
 	}
 }
 
+
+
 void AMyPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	MouseMovementTrack();
 }
+
 
 void AMyPlayerController::OnMouseClick()
 {
@@ -128,12 +131,20 @@ void AMyPlayerController::OnMouseClick()
 			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, HitActorName);
 			if (HitActorName.StartsWith("BP_FieldActor")) {
 				AFieldActor* CurrentFieldActor = Cast<AFieldActor>(HitActor);
-				if (CurrentFieldActor->GetState()==1) {
+				if (CurrentFieldActor->GetState()==0) {
 					// unlock
 					int NeedMoney = CurrentFieldActor->BuyField();
 					MyUserWidget->AlterMoney(-NeedMoney);
-					if (MyCharacter) {
-						MyCharacter->IsDigging = true;
+
+				}
+				else if (CurrentFieldActor->GetState() == 1) {
+					// uncultivated
+					if (true) {
+						// with dig tool
+						CurrentFieldActor->Cultivate();
+						if (MyCharacter) {
+							MyCharacter->IsDigging = true;
+						}
 					}
 				}
 				else if (!CurrentFieldActor->CheckHasPlant()) {

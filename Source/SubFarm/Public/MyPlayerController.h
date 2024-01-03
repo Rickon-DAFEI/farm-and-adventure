@@ -18,7 +18,7 @@ class SUBFARM_API AMyPlayerController : public APlayerController
 
 private:
 	AActor* PreviousHitActor = nullptr;
-
+	FTimerHandle TimerHandle;
 public:
 	virtual void SetupInputComponent();
 	virtual void WheelUpFunction();
@@ -34,4 +34,5 @@ public:
 	void AddBackpackWidgetToViewport();
 	void RemoveBackpackWidgetToViewport();
 	void MouseMovementTrack();
+
 };

@@ -16,12 +16,15 @@ AFieldActor::AFieldActor()
 	FieldMesh->SetupAttachment(MyScene);
 	PlantMesh->SetupAttachment(FieldMesh);
 	//PlantMesh->SetRelativeLocation(FVector(0, 0, 100.0f));
-	static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFieldMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/mesh_1__Box357.mesh_1__Box357'"));
+	
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFieldMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/mesh_1__Box357.mesh_1__Box357'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFieldMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/unlock.unlock'"));
 	FieldMesh->SetStaticMesh(TempFieldMesh.Object);
+	/// Script / Engine.StaticMesh'/Game/FarmAndAdvanture/plants/unlock.unlock'
 	//static ConstructorHelpers::FObjectFinder<UStaticMesh>TempPlantMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/t5.t5'"));
 	//PlantMesh->SetStaticMesh(TempPlantMesh.Object);
 	//PlantTomato();
-	CurrentState.State = 1;
+	CurrentState.State = 0;
 	CurrentState.Lock = 0;
 	CurrentState.CurrentLevel = 0;
 	CurrentState.WeedsTime = 0;
@@ -128,10 +131,21 @@ bool AFieldActor::CheckCanHarvest()
 	return CurrentState.CurrentLevel == PlantGrowthLevel.Num();
 }
 
+void AFieldActor::Cultivate()
+{
+	CurrentState.State = 2;
+	UStaticMesh* LoadedMesh = nullptr;
+	FString GrowthMeshPath = TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/mesh_1__Box357.mesh_1__Box357'");
+	LoadedMesh = LoadObject<UStaticMesh>(nullptr, *GrowthMeshPath);
+	if (LoadedMesh) {
+		FieldMesh->SetStaticMesh(LoadedMesh);
+	}
+}
+
 
 int AFieldActor::BuyField()
 {
-	CurrentState.State = 3;
+	CurrentState.State = 1;
 	CurrentState.Lock = false;
 	return CurrentState.Worth;
 }
