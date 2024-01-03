@@ -88,4 +88,7 @@ public:
 	float CameraHeight;
 
 	void AddBackpackItems(TArray<FOutcomeStruct> *AddList);
+
+	void StopAnimation();
+
 };

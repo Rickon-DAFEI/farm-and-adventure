@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Animation/AnimComposite.h"
 #include "GameFramework/PlayerController.h"
 #include "MyBackpackWidget.h"
 #include "MyUserWidget.h"
@@ -30,9 +31,12 @@ public:
 	UMyBackpackWidget* MybackpackWidget;
 	UMyUserWidget* MyUserWidget;
 
+
 	void OnMouseClick();
 	void AddBackpackWidgetToViewport();
 	void RemoveBackpackWidgetToViewport();
 	void MouseMovementTrack();
+
+	void StopDigging();
 
 };

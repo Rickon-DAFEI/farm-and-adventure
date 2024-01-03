@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "MyCharacter.h"
 
 // Sets default values
@@ -144,5 +143,11 @@ void AMyCharacter::AddBackpackItems(TArray<FOutcomeStruct> *AddList)
 	{
 		PlayerBackpack.AlterItemNumber(AddItem.HashIndex, AddItem.Number);
 	}
+}
+
+void AMyCharacter::StopAnimation()
+{
+
+
 }
 

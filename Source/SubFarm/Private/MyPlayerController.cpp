@@ -106,6 +106,15 @@ void AMyPlayerController::MouseMovementTrack() {
 	}
 }
 
+void AMyPlayerController::StopDigging()
+{
+	if (GetPawn()) {
+		AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
+		MyCharacter->IsDigging = false;
+	}
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Finish Digging"));
+}
+
 
 
 void AMyPlayerController::Tick(float DeltaTime)
@@ -144,6 +153,18 @@ void AMyPlayerController::OnMouseClick()
 						CurrentFieldActor->Cultivate();
 						if (MyCharacter) {
 							MyCharacter->IsDigging = true;
+						
+							FString AssetPath = TEXT("/Script/Engine.AnimComposite'/Game/Digging.Digging'");
+
+							FStringAssetReference AssetRef(AssetPath);
+
+							UAnimComposite* AnimComposite = Cast<UAnimComposite>(AssetRef.TryLoad());
+
+							if (AnimComposite) {
+								float AnimDuration = AnimComposite->GetPlayLength();
+								GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyPlayerController::StopDigging, AnimDuration, false);
+							}
+						
 						}
 					}
 				}
