@@ -67,14 +67,7 @@ void AMyPlayerController::MouseMovementTrack() {
 		if (DeprojectScreenPositionToWorld(MouseX, MouseY, WorldLocation, WorldDirection))
 		{
 			FVector StartLocation = WorldLocation;
-			FVector PlayerLocation = GetPawn()->GetActorLocation();
 
-			float Distance = FVector::Dist(PlayerLocation, HitActor->GetActorLocation());
-
-			float TriggerDistance = 300.0f; // 例如，500个单位
-			if (Distance > TriggerDistance) {
-				return;
-			}
 			FVector EndLocation = StartLocation + WorldDirection * 10000;
 
 			FHitResult HitResult;
