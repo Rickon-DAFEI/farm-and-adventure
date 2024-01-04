@@ -215,6 +215,7 @@ void AMyPlayerController::OnMouseClick()
 							GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyPlayerController::StopAction, AnimDuration, false);
 						}
 						CurrentFieldActor->Plant(CurrentTool);
+						MyCharacter->PlayerBackpack.AlterItemNumber(CurrentTool, -1);
 					}
 					// get hand plant
 				}
