@@ -7,7 +7,6 @@
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 #include "Components/WrapBox.h"
-#include "BackpackItemWidget.h"
 #include "MyBackpackWidget.generated.h"
 
 

@@ -3,6 +3,7 @@
 #include "MyBackpackWidget.h"
 #include "MyPlayerController.h"
 #include "MyCharacter.h"
+#include "BackpackItemWidget.h"
 #include "MyItemObject.h"
 #include <Kismet/GameplayStatics.h>
 

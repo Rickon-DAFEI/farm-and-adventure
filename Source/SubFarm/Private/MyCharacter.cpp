@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyCharacter.h"
-#include "MyItemObject.h"
 #include "MyPlayerController.h"
 
 // Sets default values

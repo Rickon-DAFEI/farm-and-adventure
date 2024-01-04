@@ -16,9 +16,9 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/WidgetComponent.h"
 #include "TimerManager.h"
+#include "MyItemObject.h"
 #include "MyBackpack.h"
 #include "MyInterface.h"
-#include "MyItemObject.h"
 #include "MyCharacter.generated.h"
 
 UCLASS()
