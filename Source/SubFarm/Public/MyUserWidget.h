@@ -35,6 +35,13 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	UButton* BackpackButton;
+
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* HintImage;
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* HintWord;
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyHealth")
 	//float CurrentHealth = 100.0f;
 
@@ -55,6 +62,11 @@ public:
 
 	UFUNCTION()
 	void UpdateMoneyWidget();
+	UFUNCTION()
+	void UpdateHint(FText HintMessage);
+
+	UFUNCTION()
+	void CloseHint();
 	//UFUNCTION()
 	//void Quit();
 

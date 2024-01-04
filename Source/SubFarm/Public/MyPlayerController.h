@@ -24,7 +24,8 @@ public:
 	virtual void SetupInputComponent();
 	virtual void WheelUpFunction();
 	virtual void WheelDownFunction();
-	virtual void OnMouseMoveX(float AxisValue);
+	virtual void RotateLeft();
+	virtual void RotateRight();
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
@@ -36,6 +37,9 @@ public:
 	void AddBackpackWidgetToViewport();
 	void RemoveBackpackWidgetToViewport();
 	void MouseMovementTrack();
+
+	void UpdateHint(FText HintMessage);
+
 
 	void StopDigging();
 

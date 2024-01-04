@@ -52,7 +52,8 @@ struct FMyItemTableStruct : public FTableRowBase {
 	TArray<FOutcomeStruct> Outcome;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
 	TArray<FGrowthStepsStruct> GrowthSteps;
-
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	FString MeshReference;
 };
 
 /**

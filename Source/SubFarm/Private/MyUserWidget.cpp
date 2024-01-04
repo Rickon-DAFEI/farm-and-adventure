@@ -10,6 +10,8 @@ bool UMyUserWidget::Initialize()
 	BackpackButton->OnClicked.AddDynamic(this, &UMyUserWidget::OpenBackpack);
 	Money = 1000;
 	UpdateMoneyWidget();
+	CloseHint();
+
 	return true;
 }
 
@@ -35,6 +37,24 @@ void UMyUserWidget::UpdateMoneyWidget()
 {
 	MoneyText->SetText(FText::AsNumber(Money));
 }
+
+void UMyUserWidget::UpdateHint(FText HintMessage)
+{
+
+	HintWord->SetText(HintMessage);
+
+	HintImage->SetVisibility(ESlateVisibility::Visible);
+	HintWord->SetVisibility(ESlateVisibility::Visible);
+	
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UMyUserWidget::CloseHint, 3.0f, false);
+}
+
+void UMyUserWidget::CloseHint()
+{
+	HintImage->SetVisibility(ESlateVisibility::Collapsed);
+	HintWord->SetVisibility(ESlateVisibility::Collapsed);
+}
+
 
 //void UMyUserWidget::Start()
 //{

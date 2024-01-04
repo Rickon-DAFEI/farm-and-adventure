@@ -16,7 +16,6 @@ AFieldActor::AFieldActor()
 	FieldMesh->SetupAttachment(MyScene);
 	PlantMesh->SetupAttachment(FieldMesh);
 	//PlantMesh->SetRelativeLocation(FVector(0, 0, 100.0f));
-	
 	//static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFieldMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/mesh_1__Box357.mesh_1__Box357'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>TempFieldMesh(TEXT("/Script/Engine.StaticMesh'/Game/FarmAndAdvanture/plants/unlock.unlock'"));
 	FieldMesh->SetStaticMesh(TempFieldMesh.Object);

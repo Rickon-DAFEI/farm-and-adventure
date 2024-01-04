@@ -13,6 +13,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Character.h"
 #include "MyHealthWidget.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/WidgetComponent.h"
 #include "TimerManager.h"
 #include "MyBackpack.h"
@@ -46,6 +47,15 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 	UCameraComponent* MyCamera;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
+	//USkeletalMesh* MySkeletalMesh;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
+	//class USceneComponent* ToolScene;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
+	//class UStaticMeshComponent* ToolMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	class UInputMappingContext* DefaultMappingContext;
@@ -85,10 +95,17 @@ public:
 
 	void Zoom(bool Dirction, float ZoomSpeed);
 
+	void Rotate(bool Dirction, float ZoomSpeed);
+
 	float CameraHeight;
 
 	void AddBackpackItems(TArray<FOutcomeStruct> *AddList);
 
 	void StopAnimation();
 
+	UFUNCTION()
+	void PutOnHand(int HashIndex);
+
+	UFUNCTION()
+	void GiveInitalItems();
 };

@@ -27,6 +27,5 @@ void MyBackpack::AlterItemNumber(int ItemHashIndex, int Number)
         BackpackItemList.Add(ItemHashIndex, Number);
     }
 
-    GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("Add Item %d %d"), ItemHashIndex, Number));
 }
 

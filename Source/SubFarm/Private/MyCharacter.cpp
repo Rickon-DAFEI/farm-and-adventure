@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyCharacter.h"
+#include "MyPlayerController.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -9,7 +10,9 @@ AMyCharacter::AMyCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	MySpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("MySpringArmComponent"));
 	MyCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("MyCameraComponent"));
-
+	/*ToolMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ToolMesh"));
+	ToolScene = CreateDefaultSubobject<USceneComponent>(TEXT("MyToolScene"));*/
+	//MySkeletalMesh = CreateDefaultSubobject<USkeletalMesh>(TEXT("MySkeletalMesh"));
 	MyWidgetHealth = CreateDefaultSubobject<UWidgetComponent>(TEXT("MyWidgetComponent"));
 	//MyWidgetHealth->SetupAttachment(RootComponent);
 	CameraHeight = 450.0f;
@@ -31,11 +34,15 @@ AMyCharacter::AMyCharacter()
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
 
+	/*ToolScene->SetupAttachment(GetMesh(), FName("hand_rSocket"));
+	ToolMesh->SetupAttachment(ToolScene);*/
+
 	// character face to up-speed diraction
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 
 	MySpringArm->bUsePawnControlRotation = true;
 
+	GiveInitalItems();
 }
 
 // Called when the game starts or when spawned
@@ -125,16 +132,20 @@ void AMyCharacter::PrintTime()
 void AMyCharacter::Zoom(bool Dirction, float ZoomSpeed)
 {
 
-	if (CameraHeight >= 300.0f && CameraHeight <= 1200.0f) {
+	if (CameraHeight >= 200 && CameraHeight <= 1200.0f) {
 
 		CameraHeight += (Dirction ? -1 : 1) * (ZoomSpeed * 2);
-		CameraHeight = fmax(300, CameraHeight);
+		CameraHeight = fmax(200, CameraHeight);
 		CameraHeight = fmin(1200, CameraHeight);
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%f"), CameraHeight));
 		FVector NewLocation = FVector(-CameraHeight, 0.0f, CameraHeight);
 		MyCamera->SetRelativeLocation(NewLocation);
 	}
 
+}
+
+void AMyCharacter::Rotate(bool Dirction, float ZoomSpeed)
+{
 }
 
 void AMyCharacter::AddBackpackItems(TArray<FOutcomeStruct> *AddList)
@@ -148,6 +159,34 @@ void AMyCharacter::AddBackpackItems(TArray<FOutcomeStruct> *AddList)
 void AMyCharacter::StopAnimation()
 {
 
+}
 
+void AMyCharacter::PutOnHand(int HashIndex)
+{
+	UStaticMesh* LoadedMesh = nullptr;
+	FString GrowthMeshPath = TEXT("/Script/Engine.StaticMesh'/Game/Tools/Shovel_SM.Shovel_SM'");
+	LoadedMesh = LoadObject<UStaticMesh>(nullptr, *GrowthMeshPath);
+	if (LoadedMesh) {
+		// find toolmesh
+		UStaticMeshComponent* FoundToolMesh = Cast<UStaticMeshComponent>(GetComponentByClass(UStaticMeshComponent::StaticClass()));
+
+		if (FoundToolMesh)
+		{
+			FoundToolMesh->SetStaticMesh(LoadedMesh);
+		}
+	}
+}
+
+void AMyCharacter::GiveInitalItems()
+{
+	PlayerBackpack.AlterItemNumber(2001,2);
+	PlayerBackpack.AlterItemNumber(2003, 3);
+	PlayerBackpack.AlterItemNumber(2005, 1);
+	AMyPlayerController* MyController = Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController());
+	if (MyController)
+	{
+		FText HintMessage = FText::FromString(TEXT("Some text"));
+		MyController->UpdateHint(HintMessage);
+	}
 }
 

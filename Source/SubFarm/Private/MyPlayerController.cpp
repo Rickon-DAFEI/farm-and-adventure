@@ -9,6 +9,8 @@ void AMyPlayerController::SetupInputComponent()
 	Super::SetupInputComponent();
 	InputComponent->BindAction("WheelUp",IE_Pressed,this,&AMyPlayerController::WheelUpFunction);
 	InputComponent->BindAction("WheelDown", IE_Pressed, this, &AMyPlayerController::WheelDownFunction);
+	InputComponent->BindAction("RotateLeft", IE_Pressed, this, &AMyPlayerController::RotateLeft);
+	InputComponent->BindAction("RotateRight", IE_Pressed, this, &AMyPlayerController::RotateRight);
 	bShowMouseCursor = true; 
 	bEnableClickEvents = true; 
 	bEnableMouseOverEvents = true; 
@@ -17,7 +19,6 @@ void AMyPlayerController::SetupInputComponent()
 	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	SetInputMode(InputMode);
 	InputComponent->BindAction("MouseClick", IE_Pressed, this, &AMyPlayerController::OnMouseClick);
-	InputComponent->BindAxis("MouseX", this, &AMyPlayerController::OnMouseMoveX);
 }
 
 void AMyPlayerController::WheelUpFunction()
@@ -40,9 +41,19 @@ void AMyPlayerController::WheelDownFunction()
 	}
 }
 
-void AMyPlayerController::OnMouseMoveX(float AxisValue)
+
+void AMyPlayerController::RotateLeft()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Moving MouseX"));
+	if (GetPawn()) {
+		AMyCharacter* MyCameraPawn = Cast<AMyCharacter>(GetPawn());
+		if (MyCameraPawn) {
+			MyCameraPawn->Zoom(1, 10);
+		}
+	}
+}
+
+void AMyPlayerController::RotateRight()
+{
 }
 
 void AMyPlayerController::BeginPlay()
@@ -53,7 +64,12 @@ void AMyPlayerController::BeginPlay()
 	//UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C''"));
 	MyUserWidget = CreateWidget<UMyUserWidget>(GetWorld(),widgetClass);
 	MyUserWidget->AddToViewport();
-
+	if (GetPawn()) {
+		AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
+		if (MyCharacter) {
+			MyCharacter->PutOnHand(2005);
+		}
+	}
 }
 
 void AMyPlayerController::MouseMovementTrack() {
@@ -106,6 +122,11 @@ void AMyPlayerController::MouseMovementTrack() {
 	}
 }
 
+void AMyPlayerController::UpdateHint(FText HintMessage)
+{
+	MyUserWidget->UpdateHint(HintMessage);
+}
+
 void AMyPlayerController::StopDigging()
 {
 	if (GetPawn()) {
@@ -114,7 +135,6 @@ void AMyPlayerController::StopDigging()
 	}
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Finish Digging"));
 }
-
 
 
 void AMyPlayerController::Tick(float DeltaTime)
@@ -135,7 +155,16 @@ void AMyPlayerController::OnMouseClick()
 	{
 		if (HitResult.GetActor() != nullptr)
 		{	
+			FVector PlayerLocation = GetPawn()->GetActorLocation();
+
+
 			AActor* HitActor = HitResult.GetActor();
+			float Distance = FVector::Dist(PlayerLocation, HitActor->GetActorLocation());
+
+			float TriggerDistance = 300.0f; // 例如，500个单位
+			if (Distance > TriggerDistance) {
+				return ;
+			}
 			FString HitActorName = *HitActor->GetName();
 			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, HitActorName);
 			if (HitActorName.StartsWith("BP_FieldActor")) {
