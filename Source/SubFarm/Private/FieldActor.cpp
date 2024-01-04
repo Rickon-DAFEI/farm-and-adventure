@@ -68,7 +68,7 @@ void AFieldActor::EndLookAt()
 
 void AFieldActor::Plant(int HashIndex)
 {
-	FString AudioFilePath = "/Script/Engine.SoundWave'/Game/Music/Digging.Digging'";
+	FString AudioFilePath = "/Script/Engine.SoundWave'/Game/Music/plant.plant'";
 
 	USoundWave* LoadedSoundWave = LoadObject<USoundWave>(nullptr, *AudioFilePath);
 
