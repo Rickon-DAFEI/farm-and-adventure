@@ -182,11 +182,5 @@ void AMyCharacter::GiveInitalItems()
 	PlayerBackpack.AlterItemNumber(2001,2);
 	PlayerBackpack.AlterItemNumber(2003, 3);
 	PlayerBackpack.AlterItemNumber(2005, 1);
-	AMyPlayerController* MyController = Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController());
-	if (MyController)
-	{
-		FText HintMessage = FText::FromString(TEXT("Some text"));
-		MyController->UpdateHint(HintMessage);
-	}
 }
 

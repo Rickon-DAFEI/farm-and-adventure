@@ -35,8 +35,9 @@ bool UMyBackpackWidget::Initialize()
                     UBackpackItemWidget* NewWidget = CreateWidget<UBackpackItemWidget>(this, ItemWidgetClass);
                     if (WrapBox && NewWidget)
                     {
-                        NewWidget->SetItemContentImage(ImageReference);
-                        NewWidget->SetItemNumber(Value);
+                        NewWidget->initItemMessage(*TableRow, ImageReference, Value);
+                        //NewWidget->SetItemContentImage(ImageReference);
+                        //NewWidget->SetItemNumber(Value);
                         WrapBox->AddChildToWrapBox(NewWidget);
                         
                     }

@@ -113,6 +113,9 @@
     <ClCompile Include="..\..\Source\SubFarm\Private\PackpackItem.cpp">
       <Filter>Source\SubFarm\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SubFarm\Private\PutHandWidget.cpp">
+      <Filter>Source\SubFarm\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\SubFarm\Public">
       <UniqueIdentifier>{395204B0-5DEB-3A39-A3BC-C5302DD7D9DE}</UniqueIdentifier>
     </Filter>
@@ -183,6 +186,9 @@
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SubFarm\Public\PackpackItem.h">
+      <Filter>Source\SubFarm\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SubFarm\Public\PutHandWidget.h">
       <Filter>Source\SubFarm\Public</Filter>
     </ClInclude>
   </ItemGroup>

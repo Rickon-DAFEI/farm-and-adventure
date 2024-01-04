@@ -38,6 +38,8 @@ public:
 	void RemoveBackpackWidgetToViewport();
 	void MouseMovementTrack();
 
+	void ChoiseItem(int HashIndex);
+
 	void UpdateHint(FText HintMessage);
 
 

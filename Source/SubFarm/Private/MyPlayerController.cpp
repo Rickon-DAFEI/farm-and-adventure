@@ -14,7 +14,6 @@ void AMyPlayerController::SetupInputComponent()
 	bShowMouseCursor = true; 
 	bEnableClickEvents = true; 
 	bEnableMouseOverEvents = true; 
-
 	FInputModeGameAndUI InputMode;
 	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	SetInputMode(InputMode);
@@ -70,6 +69,8 @@ void AMyPlayerController::BeginPlay()
 			MyCharacter->PutOnHand(2005);
 		}
 	}
+	FText MyText = FText::FromString(TEXT("Initial props have been obtained \n please open the backpack to view"));
+	UpdateHint(MyText);
 }
 
 void AMyPlayerController::MouseMovementTrack() {
@@ -229,5 +230,15 @@ void AMyPlayerController::RemoveBackpackWidgetToViewport()
 	if (MybackpackWidget && MybackpackWidget->IsInViewport())
 	{
 		MybackpackWidget->RemoveFromViewport();
+	}
+}
+
+void AMyPlayerController::ChoiseItem(int HashIndex) {
+	RemoveBackpackWidgetToViewport();
+	if (GetPawn()) {
+		AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
+		if (MyCharacter) {
+			MyCharacter->PutOnHand(HashIndex);
+		}
 	}
 }
