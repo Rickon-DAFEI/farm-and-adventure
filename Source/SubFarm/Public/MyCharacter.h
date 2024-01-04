@@ -108,4 +108,6 @@ public:
 
 	UFUNCTION()
 	void GiveInitalItems();
+
+	bool IsDoingAction();
 };

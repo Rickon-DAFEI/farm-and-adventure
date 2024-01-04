@@ -6,11 +6,13 @@
 #include "GameFramework/Actor.h"
 #include "MyInterface.h"
 #include "MyItemObject.h"
+#include "Components/AudioComponent.h"
 #include "FieldActor.generated.h"
 
 struct PlantingState
 {
 	int32 State; //unLock:0 uncultivated:1
+	int32 HashIndex;
 	float WeedsTime;
 	float LastWeedingTime;
 	int32 Worth;
@@ -35,7 +37,6 @@ protected:
 	PlantingState CurrentState;
 	TArray<FGrowthStepsStruct> PlantGrowthLevel;
 	TArray<FOutcomeStruct> OutcomeList;
-
 	FTimerHandle TimerHandle;
 
 public:	
@@ -55,6 +56,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 	class UStaticMeshComponent* PlantMesh;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
+	class UAudioComponent* MyAudio;
 
 	UFUNCTION()
 	int BuyField();
@@ -67,8 +70,10 @@ public:
 	UFUNCTION()
 	void Growth();
 
+
 	UFUNCTION()
 	TArray<FOutcomeStruct> Harvest();
+
 
 	UFUNCTION()
 	int32 GetState();
@@ -82,5 +87,13 @@ public:
 	UFUNCTION()
 	void Cultivate();
 
+	UFUNCTION()
+	void FinishPlant();
+
+	UFUNCTION()
+	void FinishCultivate();
+
+	UFUNCTION()
+	void FinishHarvest();
 
 };

@@ -31,7 +31,7 @@ public:
 
 	UMyBackpackWidget* MybackpackWidget;
 	UMyUserWidget* MyUserWidget;
-
+	int32 CurrentTool;
 
 	void OnMouseClick();
 	void AddBackpackWidgetToViewport();
@@ -42,7 +42,6 @@ public:
 
 	void UpdateHint(FText HintMessage);
 
-
-	void StopDigging();
+	void StopAction();
 
 };

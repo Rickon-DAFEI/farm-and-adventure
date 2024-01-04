@@ -93,23 +93,23 @@ void AMyPlayerController::MouseMovementTrack() {
 						if (Interface)
 						{
 							Interface->EndLookAt();
-
 						}
 					}
 
 					PreviousHitActor = HitActor;
 
-					IMyInterface* Interface = Cast<IMyInterface>(HitActor);
-					if (Interface)
-					{
-						FVector PlayerLocation = GetPawn()->GetActorLocation();
+				}
+				IMyInterface* Interface = Cast<IMyInterface>(HitActor);
+				if (Interface)
+				{
+					FVector PlayerLocation = GetPawn()->GetActorLocation();
 
-						float Distance = FVector::Dist(PlayerLocation, HitActor->GetActorLocation());
+					float Distance = FVector::Dist(PlayerLocation, HitActor->GetActorLocation());
 
-						float TriggerDistance = 300.0f; // 例如，500个单位
-						if (Distance < TriggerDistance) {
-							Interface->IsLookAt();
-						}
+					float TriggerDistance = 350.0f; // 例如，500个单位
+					if (Distance < TriggerDistance) {
+						Interface->IsLookAt();
+
 					}
 				}
 			}
@@ -122,13 +122,14 @@ void AMyPlayerController::UpdateHint(FText HintMessage)
 	MyUserWidget->UpdateHint(HintMessage);
 }
 
-void AMyPlayerController::StopDigging()
+void AMyPlayerController::StopAction()
 {
 	if (GetPawn()) {
 		AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
 		MyCharacter->IsDigging = false;
+		MyCharacter->IsHarvesting = false;
+		MyCharacter->IsPlanting = false;
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("Finish Digging"));
 }
 
 
@@ -145,13 +146,15 @@ void AMyPlayerController::OnMouseClick()
 	AMyCharacter* MyCharacter = nullptr;
 	if (GetPawn()) {
 		MyCharacter = Cast<AMyCharacter>(GetPawn());
+		if (MyCharacter->IsDoingAction()) {
+			return;
+		}
 	}
 	if (GetHitResultUnderCursorByChannel(UEngineTypes::ConvertToTraceType(ECollisionChannel::ECC_Visibility), false, HitResult))
 	{
 		if (HitResult.GetActor() != nullptr)
 		{	
 			FVector PlayerLocation = GetPawn()->GetActorLocation();
-
 
 			AActor* HitActor = HitResult.GetActor();
 			float Distance = FVector::Dist(PlayerLocation, HitActor->GetActorLocation());
@@ -168,13 +171,14 @@ void AMyPlayerController::OnMouseClick()
 					// unlock
 					int NeedMoney = CurrentFieldActor->BuyField();
 					MyUserWidget->AlterMoney(-NeedMoney);
-
+					
+					FText MyText = FText::FromString(TEXT("Purchased a land \n - 100 gold coins"));
+					MyUserWidget->UpdateHint(MyText);
 				}
 				else if (CurrentFieldActor->GetState() == 1) {
 					// uncultivated
-					if (true) {
+					if (CurrentTool==2005) {
 						// with dig tool
-						CurrentFieldActor->Cultivate();
 						if (MyCharacter) {
 							MyCharacter->IsDigging = true;
 						
@@ -186,23 +190,52 @@ void AMyPlayerController::OnMouseClick()
 
 							if (AnimComposite) {
 								float AnimDuration = AnimComposite->GetPlayLength();
-								GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyPlayerController::StopDigging, AnimDuration, false);
+								GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyPlayerController::StopAction, AnimDuration, false);
 							}
-						
+							CurrentFieldActor->Cultivate();
 						}
+					}
+					else {
+						FText MyText = FText::FromString(TEXT("You need to equip with a sholve!"));
+						MyUserWidget->UpdateHint(MyText);
 					}
 				}
 				else if (!CurrentFieldActor->CheckHasPlant()) {
+					if (MyCharacter) {
+						MyCharacter->IsPlanting = true;
+						MyCharacter->IsDigging = true;
+						FString AssetPath = TEXT("/Script/Engine.AnimComposite'/Game/Digging.Digging'");
+
+						FStringAssetReference AssetRef(AssetPath);
+
+						UAnimComposite* AnimComposite = Cast<UAnimComposite>(AssetRef.TryLoad());
+
+						if (AnimComposite) {
+							float AnimDuration = AnimComposite->GetPlayLength();
+							GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyPlayerController::StopAction, AnimDuration, false);
+						}
+						CurrentFieldActor->Plant(CurrentTool);
+					}
 					// get hand plant
-					CurrentFieldActor->Plant(2001);
 				}
 				else if(CurrentFieldActor->CheckHasPlant()){
 					if (CurrentFieldActor->CheckCanHarvest()) {
 						TArray<FOutcomeStruct> OutcomeList = CurrentFieldActor->Harvest();
 						if (MyCharacter) {
-							if (MyCharacter) {
-								MyCharacter->AddBackpackItems(&OutcomeList);
+							MyCharacter->IsHarvesting = true;
+							FString AssetPath = TEXT("/Script/Engine.AnimComposite'/Game/Harvesting.Harvesting'");
+
+							FStringAssetReference AssetRef(AssetPath);
+
+							UAnimComposite* AnimComposite = Cast<UAnimComposite>(AssetRef.TryLoad());
+							if (AnimComposite) {
+								float AnimDuration = AnimComposite->GetPlayLength();
+								GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AMyPlayerController::StopAction, AnimDuration, false);
 							}
+							FText MyText = FText::FromString(TEXT("Congratulations for the harvest!!"));
+							MyUserWidget->UpdateHint(MyText);
+							MyCharacter->AddBackpackItems(&OutcomeList);
+							
 						}
 					}
 				}
@@ -233,6 +266,7 @@ void AMyPlayerController::PutOnHand(int HashIndex) {
 		AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
 		if (MyCharacter) {
 			MyCharacter->PutOnHand(HashIndex);
+			CurrentTool = HashIndex;
 		}
 	}
 }

@@ -181,3 +181,8 @@ void AMyCharacter::GiveInitalItems()
 	PlayerBackpack.AlterItemNumber(2005, 1);
 }
 
+bool AMyCharacter::IsDoingAction()
+{
+	return IsDigging || IsPlanting || IsHarvesting;
+}
+

@@ -11,6 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 // Cross Module References
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
+	ENGINE_API UClass* Z_Construct_UClass_UAudioComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	SUBFARM_API UClass* Z_Construct_UClass_AFieldActor();
@@ -19,6 +20,20 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	SUBFARM_API UScriptStruct* Z_Construct_UScriptStruct_FOutcomeStruct();
 	UPackage* Z_Construct_UPackage__Script_SubFarm();
 // End Cross Module References
+	DEFINE_FUNCTION(AFieldActor::execFinishHarvest)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->FinishHarvest();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AFieldActor::execFinishCultivate)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->FinishCultivate();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AFieldActor::execCultivate)
 	{
 		P_FINISH;
@@ -84,6 +99,8 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 			{ "CheckCanHarvest", &AFieldActor::execCheckCanHarvest },
 			{ "CheckHasPlant", &AFieldActor::execCheckHasPlant },
 			{ "Cultivate", &AFieldActor::execCultivate },
+			{ "FinishCultivate", &AFieldActor::execFinishCultivate },
+			{ "FinishHarvest", &AFieldActor::execFinishHarvest },
 			{ "GetState", &AFieldActor::execGetState },
 			{ "Growth", &AFieldActor::execGrowth },
 			{ "Harvest", &AFieldActor::execHarvest },
@@ -222,6 +239,50 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_Cultivate_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AFieldActor_FinishCultivate_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFieldActor_FinishCultivate_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/FieldActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFieldActor_FinishCultivate_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFieldActor, nullptr, "FinishCultivate", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_FinishCultivate_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFieldActor_FinishCultivate_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AFieldActor_FinishCultivate()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_FinishCultivate_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AFieldActor_FinishHarvest_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFieldActor_FinishHarvest_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/FieldActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFieldActor_FinishHarvest_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFieldActor, nullptr, "FinishHarvest", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFieldActor_FinishHarvest_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFieldActor_FinishHarvest_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AFieldActor_FinishHarvest()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFieldActor_FinishHarvest_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -382,6 +443,10 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PlantMesh_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_PlantMesh;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MyAudio_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_MyAudio;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
@@ -397,6 +462,8 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		{ &Z_Construct_UFunction_AFieldActor_CheckCanHarvest, "CheckCanHarvest" }, // 2258740047
 		{ &Z_Construct_UFunction_AFieldActor_CheckHasPlant, "CheckHasPlant" }, // 780961622
 		{ &Z_Construct_UFunction_AFieldActor_Cultivate, "Cultivate" }, // 548173132
+		{ &Z_Construct_UFunction_AFieldActor_FinishCultivate, "FinishCultivate" }, // 977426795
+		{ &Z_Construct_UFunction_AFieldActor_FinishHarvest, "FinishHarvest" }, // 2887703211
 		{ &Z_Construct_UFunction_AFieldActor_GetState, "GetState" }, // 1275319023
 		{ &Z_Construct_UFunction_AFieldActor_Growth, "Growth" }, // 3871956682
 		{ &Z_Construct_UFunction_AFieldActor_Harvest, "Harvest" }, // 2091654410
@@ -433,10 +500,19 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFieldActor_Statics::NewProp_PlantMesh = { "PlantMesh", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFieldActor, PlantMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFieldActor_Statics::NewProp_PlantMesh_MetaData), Z_Construct_UClass_AFieldActor_Statics::NewProp_PlantMesh_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFieldActor_Statics::NewProp_MyAudio_MetaData[] = {
+		{ "Category", "MySceneComponent" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/FieldActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFieldActor_Statics::NewProp_MyAudio = { "MyAudio", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFieldActor, MyAudio), Z_Construct_UClass_UAudioComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AFieldActor_Statics::NewProp_MyAudio_MetaData), Z_Construct_UClass_AFieldActor_Statics::NewProp_MyAudio_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFieldActor_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFieldActor_Statics::NewProp_MyScene,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFieldActor_Statics::NewProp_FieldMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFieldActor_Statics::NewProp_PlantMesh,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFieldActor_Statics::NewProp_MyAudio,
 	};
 		const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AFieldActor_Statics::InterfaceParams[] = {
 			{ Z_Construct_UClass_UMyInterface_NoRegister, (int32)VTABLE_OFFSET(AFieldActor, IMyInterface), false },  // 3521627962
@@ -480,9 +556,9 @@ void EmptyLinkFunctionForGeneratedCodeFieldActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 2468383317U) },
+		{ Z_Construct_UClass_AFieldActor, AFieldActor::StaticClass, TEXT("AFieldActor"), &Z_Registration_Info_UClass_AFieldActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFieldActor), 3140261980U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_295816547(TEXT("/Script/SubFarm"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_2740625773(TEXT("/Script/SubFarm"),
 		Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_10168_Documents_Unreal_Projects_farm_and_advanture_Source_SubFarm_Public_FieldActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
