@@ -138,7 +138,7 @@ void AMyCharacter::Zoom(bool Dirction, float ZoomSpeed)
 		CameraHeight += (Dirction ? -1 : 1) * (ZoomSpeed * 2);
 		CameraHeight = fmax(200, CameraHeight);
 		CameraHeight = fmin(1200, CameraHeight);
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%f"), CameraHeight));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("%f"), CameraHeight));
 		FVector NewLocation = FVector(-CameraHeight, 0.0f, CameraHeight);
 		MyCamera->SetRelativeLocation(NewLocation);
 	}
@@ -166,16 +166,12 @@ void AMyCharacter::PutOnHand(int HashIndex)
 {
 	UStaticMesh* LoadedMesh = nullptr;
 	const FMyItemTableStruct* TableRow = UMyItemObject::FindItemTableRow(HashIndex);
-	FString GrowthMeshPath = TableRow->MeshReference;
-	LoadedMesh = LoadObject<UStaticMesh>(nullptr, *GrowthMeshPath);
+	FString ToolMeshPath = TableRow->MeshReference;
+		//TableRow->MeshReference;
+	LoadedMesh = LoadObject<UStaticMesh>(nullptr, *ToolMeshPath);
 	if (LoadedMesh) {
-		// find toolmesh
-		UStaticMeshComponent* FoundToolMesh = Cast<UStaticMeshComponent>(GetComponentByClass(UStaticMeshComponent::StaticClass()));
-
-		if (FoundToolMesh)
-		{
-			FoundToolMesh->SetStaticMesh(LoadedMesh);
-		}
+		UStaticMeshComponent* ToolMesh = Cast<UStaticMeshComponent>(GetDefaultSubobjectByName(TEXT("ToolMesh")));
+		ToolMesh->SetStaticMesh(LoadedMesh);
 	}
 }
 

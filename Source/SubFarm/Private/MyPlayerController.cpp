@@ -63,12 +63,6 @@ void AMyPlayerController::BeginPlay()
 	//UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C''"));
 	MyUserWidget = CreateWidget<UMyUserWidget>(GetWorld(),widgetClass);
 	MyUserWidget->AddToViewport();
-	if (GetPawn()) {
-		AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
-		if (MyCharacter) {
-			MyCharacter->PutOnHand(2005);
-		}
-	}
 	FText MyText = FText::FromString(TEXT("Initial props have been obtained \n please open the backpack to view"));
 	UpdateHint(MyText);
 }

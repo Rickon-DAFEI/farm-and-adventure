@@ -2,6 +2,7 @@
 
 
 #include "PutHandWidget.h"
+#include "MyPlayerController.h"
 
 void UPutHandWidget::SetHashIndex(int HashIndex)
 {
