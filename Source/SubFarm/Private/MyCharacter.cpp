@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyCharacter.h"
+#include "MyItemObject.h"
 #include "MyPlayerController.h"
 
 // Sets default values
@@ -164,7 +165,8 @@ void AMyCharacter::StopAnimation()
 void AMyCharacter::PutOnHand(int HashIndex)
 {
 	UStaticMesh* LoadedMesh = nullptr;
-	FString GrowthMeshPath = TEXT("/Script/Engine.StaticMesh'/Game/Tools/Shovel_SM.Shovel_SM'");
+	const FMyItemTableStruct* TableRow = UMyItemObject::FindItemTableRow(HashIndex);
+	FString GrowthMeshPath = TableRow->MeshReference;
 	LoadedMesh = LoadObject<UStaticMesh>(nullptr, *GrowthMeshPath);
 	if (LoadedMesh) {
 		// find toolmesh

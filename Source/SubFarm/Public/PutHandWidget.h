@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "MyPlayerController.h"
 #include "PutHandWidget.generated.h"
 /**
  * 

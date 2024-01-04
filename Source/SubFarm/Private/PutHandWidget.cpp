@@ -10,7 +10,11 @@ void UPutHandWidget::SetHashIndex(int HashIndex)
 
 void UPutHandWidget::ConfirmPutOnHand()
 {
-
+    AMyPlayerController* MyController = Cast<AMyPlayerController>(GetWorld()->GetFirstPlayerController());
+    if (MyController)
+    {
+        MyController->PutOnHand(ItemIndex);
+    }
     RemoveFromViewport();
 }
 bool UPutHandWidget::Initialize()

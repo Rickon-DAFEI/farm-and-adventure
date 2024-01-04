@@ -233,7 +233,7 @@ void AMyPlayerController::RemoveBackpackWidgetToViewport()
 	}
 }
 
-void AMyPlayerController::ChoiseItem(int HashIndex) {
+void AMyPlayerController::PutOnHand(int HashIndex) {
 	RemoveBackpackWidgetToViewport();
 	if (GetPawn()) {
 		AMyCharacter* MyCharacter = Cast<AMyCharacter>(GetPawn());
