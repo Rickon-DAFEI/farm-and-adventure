@@ -35,6 +35,13 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+SumFarm.sln
+Binaries/
+Intermediate/
+DerivedDataCache/
+Config/
+*.gen.cpp
+*.generated.h
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -362,10 +369,3 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-SumFarm.sln
-.vs/
-Binaries/
-Intermediate/Build/*
-DerivedDataCache/
-*.gen.cpp
-*.generated.h
