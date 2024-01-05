@@ -10,9 +10,10 @@
 #include "MyPlayerController.generated.h"
 
 /**d
- * 
+ *
  */
 UCLASS()
+
 class SUBFARM_API AMyPlayerController : public APlayerController
 {
 	GENERATED_BODY()

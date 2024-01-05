@@ -11,7 +11,6 @@ bool UMyUserWidget::Initialize()
 	Money = 1000;
 	UpdateMoneyWidget();
 	CloseHint();
-
 	return true;
 }
 
@@ -30,7 +29,7 @@ void UMyUserWidget::AlterMoney(int alterNumber)
 	FText TextValue = FText::FromString(TextString);
 	Money += alterNumber;
 	MoneyText->SetText(TextValue);
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UMyUserWidget::UpdateMoneyWidget, 3.0f, false);
+	GetWorld()->GetTimerManager().SetTimer(HintTimerHandle, this, &UMyUserWidget::UpdateMoneyWidget, 3.0f, false);
 }
 
 void UMyUserWidget::UpdateMoneyWidget()
@@ -46,7 +45,7 @@ void UMyUserWidget::UpdateHint(FText HintMessage)
 	HintImage->SetVisibility(ESlateVisibility::Visible);
 	HintWord->SetVisibility(ESlateVisibility::Visible);
 	
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UMyUserWidget::CloseHint, 3.0f, false);
+	GetWorld()->GetTimerManager().SetTimer(HintTimerHandle, this, &UMyUserWidget::CloseHint, 3.0f, false);
 }
 
 void UMyUserWidget::CloseHint()

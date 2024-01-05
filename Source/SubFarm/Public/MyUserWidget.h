@@ -17,7 +17,7 @@ class SUBFARM_API UMyUserWidget : public UUserWidget
 {
 	GENERATED_BODY()
 protected:
-	FTimerHandle TimerHandle;
+	FTimerHandle HintTimerHandle;
 	
 public:
 	//UPROPERTY(meta = (BindWidget))
