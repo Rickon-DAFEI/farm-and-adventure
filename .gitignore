@@ -365,5 +365,7 @@ FodyWeavers.xsd
 SumFarm.sln
 .vs/
 Binaries/
-Intermediate/*
-
+Intermediate/Build/*
+DerivedDataCache/
+*.gen.cpp
+*.generated.h
