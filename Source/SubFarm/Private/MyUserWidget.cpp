@@ -29,7 +29,7 @@ void UMyUserWidget::AlterMoney(int alterNumber)
 	FText TextValue = FText::FromString(TextString);
 	Money += alterNumber;
 	MoneyText->SetText(TextValue);
-	GetWorld()->GetTimerManager().SetTimer(HintTimerHandle, this, &UMyUserWidget::UpdateMoneyWidget, 3.0f, false);
+	GetWorld()->GetTimerManager().SetTimer(MoneyTimerHandle, this, &UMyUserWidget::UpdateMoneyWidget, 3.0f, false);
 }
 
 void UMyUserWidget::UpdateMoneyWidget()
