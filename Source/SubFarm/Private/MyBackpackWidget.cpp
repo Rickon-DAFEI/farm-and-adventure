@@ -38,6 +38,7 @@ void UMyBackpackWidget::CloseBackpack()
 
 void UMyBackpackWidget::FetchItems()
 {
+    WrapBox->ClearChildren();
     if (CurrrentPage == 0) {
         TSubclassOf<UBackpackItemWidget> ItemWidgetClass = LoadClass<UBackpackItemWidget>(nullptr, TEXT("/Game/BP_BackpackItemWidget.BP_BackpackItemWidget_C"));
         AMyCharacter* PlayerCharacter = Cast<AMyCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));

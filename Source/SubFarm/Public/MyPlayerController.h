@@ -34,25 +34,25 @@ public:
 	UMyUserWidget* MyUserWidget;
 	int32 CurrentTool;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Controller")
 	void OnMouseClick();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Controller")
 	void AddBackpackWidgetToViewport();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Controller")
 	void RemoveBackpackWidgetToViewport();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Controller")
 	void MouseMovementTrack();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Controller")
 	void PutOnHand(int HashIndex);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Controller")
 	void UpdateHint(FText HintMessage);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Controller")
 	void StopAction();
 
 };
