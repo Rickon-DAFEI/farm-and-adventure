@@ -34,15 +34,25 @@ public:
 	UMyUserWidget* MyUserWidget;
 	int32 CurrentTool;
 
+	UFUNCTION()
 	void OnMouseClick();
+
+	UFUNCTION()
 	void AddBackpackWidgetToViewport();
+
+	UFUNCTION()
 	void RemoveBackpackWidgetToViewport();
+
+	UFUNCTION()
 	void MouseMovementTrack();
 
+	UFUNCTION()
 	void PutOnHand(int HashIndex);
 
+	UFUNCTION()
 	void UpdateHint(FText HintMessage);
 
+	UFUNCTION()
 	void StopAction();
 
 };

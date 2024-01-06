@@ -248,16 +248,22 @@ void AMyPlayerController::OnMouseClick()
 
 void AMyPlayerController::AddBackpackWidgetToViewport()
 {
-	UClass* MybackpackWidgetClass = LoadClass<UMyBackpackWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C'"));
-	MybackpackWidget = CreateWidget<UMyBackpackWidget>(GetWorld(), MybackpackWidgetClass);
-	MybackpackWidget->AddToViewport();
-}
+	if (MybackpackWidget) {
+		MybackpackWidget->FetchItems();
+		MybackpackWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+	else {
+		UClass* MybackpackWidgetClass = LoadClass<UMyBackpackWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/BP_MyBackpackWidget.BP_MyBackpackWidget_C'"));
+		MybackpackWidget = CreateWidget<UMyBackpackWidget>(GetWorld(), MybackpackWidgetClass);
+		MybackpackWidget->AddToViewport();
+	}
+}	
 
 void AMyPlayerController::RemoveBackpackWidgetToViewport()
 {
 	if (MybackpackWidget && MybackpackWidget->IsInViewport())
 	{
-		MybackpackWidget->RemoveFromViewport();
+		MybackpackWidget->SetVisibility(ESlateVisibility::Hidden);
 	}
 }
 

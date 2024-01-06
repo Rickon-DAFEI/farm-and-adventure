@@ -17,34 +17,8 @@ bool UMyBackpackWidget::Initialize()
 
 		return false;
 	}
-
-    TSubclassOf<UBackpackItemWidget> ItemWidgetClass = LoadClass<UBackpackItemWidget>(nullptr, TEXT("/Game/BP_BackpackItemWidget.BP_BackpackItemWidget_C"));
-    AMyCharacter* PlayerCharacter = Cast<AMyCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
-    if (PlayerCharacter)
-    {
-        TMap<int, int> BackpackItemList = PlayerCharacter->PlayerBackpack.GetBackpackItemList();
-        for (auto& Elem : BackpackItemList)
-        {
-            int Key = Elem.Key;
-            int Value = Elem.Value;
-            const FMyItemTableStruct* TableRow = UMyItemObject::FindItemTableRow(Key);
-            if (TableRow != nullptr) {
-                const FString& ImageReference = TableRow->ImageReference;
-                if (ItemWidgetClass != nullptr)
-                {
-                    UBackpackItemWidget* NewWidget = CreateWidget<UBackpackItemWidget>(this, ItemWidgetClass);
-                    if (WrapBox && NewWidget)
-                    {
-                        NewWidget->initItemMessage(*TableRow, ImageReference, Value);
-                        //NewWidget->SetItemContentImage(ImageReference);
-                        //NewWidget->SetItemNumber(Value);
-                        WrapBox->AddChildToWrapBox(NewWidget);
-                        
-                    }
-                }
-            }
-        }
-    }
+    CurrrentPage = 0;
+    FetchItems();
     PlantImage->SetVisibility(ESlateVisibility::Collapsed);
     // Load the UBackpackItemWidget class
     CloseButton->OnClicked.AddDynamic(this, &UMyBackpackWidget::CloseBackpack);
@@ -60,4 +34,43 @@ void UMyBackpackWidget::CloseBackpack()
 
         MyController->RemoveBackpackWidgetToViewport();
     }
+}
+
+void UMyBackpackWidget::FetchItems()
+{
+    if (CurrrentPage == 0) {
+        TSubclassOf<UBackpackItemWidget> ItemWidgetClass = LoadClass<UBackpackItemWidget>(nullptr, TEXT("/Game/BP_BackpackItemWidget.BP_BackpackItemWidget_C"));
+        AMyCharacter* PlayerCharacter = Cast<AMyCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+        if (PlayerCharacter)
+        {
+            TMap<int, int> BackpackItemList = PlayerCharacter->PlayerBackpack.GetBackpackItemList();
+            for (auto& Elem : BackpackItemList)
+            {
+                int Key = Elem.Key;
+                int Value = Elem.Value;
+                const FMyItemTableStruct* TableRow = UMyItemObject::FindItemTableRow(Key);
+                if (TableRow != nullptr) {
+                    const FString& ImageReference = TableRow->ImageReference;
+                    if (ItemWidgetClass != nullptr)
+                    {
+                        UBackpackItemWidget* NewWidget = CreateWidget<UBackpackItemWidget>(this, ItemWidgetClass);
+                        if (WrapBox && NewWidget)
+                        {
+                            NewWidget->initItemMessage(*TableRow, ImageReference, Value);
+                            //NewWidget->SetItemContentImage(ImageReference);
+                            //NewWidget->SetItemNumber(Value);
+                            WrapBox->AddChildToWrapBox(NewWidget);
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else {
+        // ³èÎïÒ³
+        PlantImage->SetVisibility(ESlateVisibility::Visible);
+        PetImage->SetVisibility(ESlateVisibility::Collapsed);
+    }
+
 }

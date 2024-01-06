@@ -43,7 +43,13 @@ public:
 
 	virtual bool Initialize() override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI")
+	int CurrrentPage = 0;
 
 	UFUNCTION()
 	void CloseBackpack();
+	
+	UFUNCTION()
+	void FetchItems();
+
 };
