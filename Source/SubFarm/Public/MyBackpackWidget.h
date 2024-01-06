@@ -48,8 +48,5 @@ public:
 
 	UFUNCTION()
 	void CloseBackpack();
-	
-	UFUNCTION()
-	void FetchItems();
 
 };
