@@ -48,6 +48,9 @@ void UBackpackItemWidget::ShowPanel()
     int32 CurrentHashIndex = ItemDetail.HashIndex;
     TSubclassOf<UPutHandWidget> PutHandWidgetClass = LoadClass<UPutHandWidget>(nullptr, TEXT("/Game/UI/BP_PutHandWidget.BP_PutHandWidget_C"));
     APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+    
+
+    
     if (PlayerController)
     {
         // 获取鼠标位置
