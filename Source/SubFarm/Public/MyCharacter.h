@@ -35,9 +35,11 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	MyBackpack PlayerBackpack;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	MyBackpack PlayerBackpack;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -101,13 +103,21 @@ public:
 
 	void AddBackpackItems(TArray<FOutcomeStruct> *AddList);
 
+	UFUNCTION(BlueprintCallable)
+	void AddItem(int32 itemIndex);
+
+	UFUNCTION(BlueprintCallable)
+	TMap<int, int> GetBackpackItemList() const { return PlayerBackpack.GetBackpackItemList(); }
+
 	void StopAnimation();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void PutOnHand(int HashIndex);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void GiveInitalItems();
 
 	bool IsDoingAction();
+
+
 };

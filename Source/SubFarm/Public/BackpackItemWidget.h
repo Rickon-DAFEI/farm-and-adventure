@@ -37,15 +37,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
 	TSubclassOf<UBackpackItemWidget> BackpackItemWidgetClass;
 	
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void SetItemContentImage(const FString& AssetPath);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void ShowPanel();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void SetItemNumber(int32 Number);
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void initItemMessage(FMyItemTableStruct ItemDetail, const FString& AssetPath, int32 Number);
 
 	virtual bool Initialize() override;

@@ -2,6 +2,7 @@
 
 
 #include "BackpackItemWidget.h"
+#include "MyItemObject.h"
 
 bool UBackpackItemWidget::Initialize()
 {

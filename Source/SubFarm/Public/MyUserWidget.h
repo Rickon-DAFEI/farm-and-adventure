@@ -55,20 +55,20 @@ public:
 
 	virtual bool Initialize() override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void OpenBackpack();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void AlterMoney(int alterNumber);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void UpdateMoneyWidget();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void UpdateHint(FText HintMessage);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void CloseHint();
-	//UFUNCTION()
+	//UFUNCTION(BlueprintCallable)
 	//void Quit();
 
 

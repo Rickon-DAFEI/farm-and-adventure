@@ -59,41 +59,41 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 	class UAudioComponent* MyAudio;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	int BuyField();
 
 	//void PlantTomato();
 	
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void Plant(int HashIndex);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void Growth();
 
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	TArray<FOutcomeStruct> Harvest();
 
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	int32 GetState();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	bool CheckHasPlant();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	bool CheckCanHarvest();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void Cultivate();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void FinishPlant();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void FinishCultivate();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void FinishHarvest();
 
 };

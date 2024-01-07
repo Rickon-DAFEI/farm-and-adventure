@@ -54,6 +54,12 @@ struct FMyItemTableStruct : public FTableRowBase {
 	TArray<FGrowthStepsStruct> GrowthSteps;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
 	FString MeshReference;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	FString Worth;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	FString Attitude;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	int32 Effect;
 };
 
 /**

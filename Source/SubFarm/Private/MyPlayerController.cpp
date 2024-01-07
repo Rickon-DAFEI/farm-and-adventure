@@ -164,7 +164,6 @@ void AMyPlayerController::OnMouseClick()
 				return ;
 			}
 			FString HitActorName = *HitActor->GetName();
-			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, HitActorName);
 			if (HitActorName.StartsWith("BP_FieldActor")) {
 				AFieldActor* CurrentFieldActor = Cast<AFieldActor>(HitActor);
 				if (CurrentFieldActor->GetState()==0) {

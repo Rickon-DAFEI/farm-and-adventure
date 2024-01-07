@@ -156,6 +156,11 @@ void AMyCharacter::AddBackpackItems(TArray<FOutcomeStruct> *AddList)
 	}
 }
 
+void AMyCharacter::AddItem(int32 itemIndex)
+{
+	PlayerBackpack.AlterItemNumber(itemIndex, 1);
+}
+
 void AMyCharacter::StopAnimation()
 {
 
