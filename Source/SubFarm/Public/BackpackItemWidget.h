@@ -51,6 +51,7 @@ public:
 	virtual bool Initialize() override;
 
 	UPutHandWidget* PutHandWidget;
+	UUserWidget* UseWidget;
 
 
 };
