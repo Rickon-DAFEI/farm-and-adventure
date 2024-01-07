@@ -101,10 +101,14 @@ public:
 
 	float CameraHeight;
 
+
 	void AddBackpackItems(TArray<FOutcomeStruct> *AddList);
 
 	UFUNCTION(BlueprintCallable)
 	void AddItem(int32 itemIndex);
+
+	UFUNCTION(BlueprintCallable)
+	void AlterBackpack(int32 HashIndex,int32 Number);
 
 	UFUNCTION(BlueprintCallable)
 	TMap<int, int> GetBackpackItemList() const { return PlayerBackpack.GetBackpackItemList(); }

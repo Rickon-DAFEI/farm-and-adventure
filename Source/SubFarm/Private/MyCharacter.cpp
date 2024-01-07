@@ -161,6 +161,13 @@ void AMyCharacter::AddItem(int32 itemIndex)
 	PlayerBackpack.AlterItemNumber(itemIndex, 1);
 }
 
+void AMyCharacter::AlterBackpack(int32 HashIndex, int32 Number)
+{
+	PlayerBackpack.AlterItemNumber(HashIndex, Number);
+}
+
+
+
 void AMyCharacter::StopAnimation()
 {
 
