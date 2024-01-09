@@ -60,6 +60,19 @@ struct FMyItemTableStruct : public FTableRowBase {
 	FString Attitude;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
 	int32 Effect;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	FString ChineseName;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	FString MalayName;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	FString EnglishName;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	USoundBase* EnglishSound;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	USoundBase* MalaySound;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "MyTestDataTableStruct")
+	USoundBase* ChineseSound;
+
 };
 
 /**

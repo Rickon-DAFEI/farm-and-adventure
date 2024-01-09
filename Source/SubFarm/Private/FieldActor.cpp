@@ -199,6 +199,11 @@ void AFieldActor::FinishHarvest()
 	MyAudio->Deactivate();
 }
 
+int32 AFieldActor::GetHashIndex()
+{
+	return CurrentState.HashIndex;
+}
+
 
 int AFieldActor::BuyField()
 {

@@ -96,4 +96,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void FinishHarvest();
 
+	UFUNCTION(BlueprintCallable)
+	int32 GetHashIndex();
+
 };
