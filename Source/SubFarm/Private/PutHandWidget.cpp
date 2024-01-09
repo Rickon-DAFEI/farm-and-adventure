@@ -16,7 +16,7 @@ void UPutHandWidget::ConfirmPutOnHand()
     {
         MyController->PutOnHand(ItemIndex);
     }
-    RemoveFromViewport();
+    RemoveFromParent();
 }
 bool UPutHandWidget::Initialize()
 {

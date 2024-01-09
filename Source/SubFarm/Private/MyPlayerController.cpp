@@ -256,7 +256,7 @@ void AMyPlayerController::RemoveBackpackWidgetToViewport()
 {
 	if (MybackpackWidget && MybackpackWidget->IsInViewport())
 	{
-		MybackpackWidget->RemoveFromViewport();
+		MybackpackWidget->RemoveFromParent();
 	}
 }
 

@@ -20,42 +20,4 @@ class SUBFARM_API AMyGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	AMyGameMode();
-public:
-	virtual void BeginPlay() override;
-	virtual void Tick(float DeltaTime) override;
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReson) override;
-
-	void PrintMyArray();
-	void PrintMyMap();
-	void PrintMySet();
-
-
-	bool isGameOver;
-
-	int32 varInt32;
-	
-	int64 varInt64;
-	
-	BYTE varByte;
-	
-	FString myString; // Can be modify
-	
-	FName myName; // light string name->hash quick-search
-
-	FText myText; // Display LocalStroage
-
-	FVector myVector;
-
-	FRotator myRotator; // Roll(x), Pitch(y),Yaw(z)
-	
-	FTransform myTransform; // 向量、旋转、缩放 (FVector,FRotator,FScale)
-
-
-	TArray<int32>MyArray;
-
-	TMap<int32, FString>MyMap;
-
-	TSet<FString>MySet;
-
-
 };
